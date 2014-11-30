@@ -1,4 +1,4 @@
-package latency;
+package perf;
 
 import java.util.Vector;
 

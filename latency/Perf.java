@@ -1,5 +1,6 @@
-package latency;
+package perf;
 
+import java.awt.TrayIcon.MessageType;
 import java.util.concurrent.Semaphore;
 
 import trains.CallbackCircuitChange;
@@ -7,6 +8,7 @@ import trains.CallbackUtoDeliver;
 import trains.CircuitView;
 import trains.Interface;
 import trains.Message;
+import trains.MessageHeader;
 
 public class Perf {
 
@@ -21,6 +23,10 @@ public class Perf {
 
 	static Interface trin = Interface.trainsInterface();
 	static int rank;
+	static int pingResponder;
+
+	final static int AM_PING = 0;
+	final static int AM_PONG = 1;
 
 	public static class myCallbackCircuitChange implements
 			CallbackCircuitChange {
@@ -67,6 +73,8 @@ public class Perf {
 				for (rank = 0; (rank < cv.getMemb())
 						&& trin.JgetMyAddress() != cv.getMembersAddress(rank); rank++)
 					;
+
+				pingResponder = cv.getMembersAddress(0);
 				System.out
 						.println("!!! ******** enough members to start utoBroadcasting\n");
 				semWaitEnoughMembers.release();
@@ -88,6 +96,36 @@ public class Perf {
 
 		@Override
 		public void run(int sender, Message msg) {
+
+			if (msg.getMessageHeader().getType() == AM_PING) {
+				if (trin.JgetMyAddress() == pingResponder) {
+					Message pongMsg = new Message(new MessageHeader(msg
+							.getMessageHeader().getLen(), AM_PONG),
+							msg.getPayload());
+					int rc = trin.JutoBroadcast(pongMsg);					
+					// if (rc < 0) {
+					// System.out.println("JutoBroadcast failed.");
+					// return;
+					// }
+				}
+				// System.out.println("AM_PING, pingResponder = " +
+				// pingResponder + ", myAddr = " + trin.JgetMyAddress());
+			} else if (msg.getMessageHeader().getType() == AM_PONG) {
+				// msg.getPayload().
+				// memcpy(&pingSender, mp->payload, sizeof(address));
+				// if (pingSender == myAddress) {
+				// memcpy(&sendDate, mp->payload + sizeof(address),
+				// sizeof(struct timeval));
+				// gettimeofday(&receiveDate, NULL );
+				// timersub(&receiveDate, &sendDate, &latency);
+				//
+				// if (measurementPhase) {
+				// recordValue(latency, &record);
+				// }
+				//
+				// }
+				System.out.println("AM_PONG");
+			}
 
 			nbRecMsg++;
 
@@ -178,7 +216,7 @@ public class Perf {
 				myCallbackCircuitChange.class.getName(),
 				myCallbackUtoDeliver.class.getName());
 
-		timeKeeper.setTimeJtrInitEnds(System.nanoTime());		
+		timeKeeper.setTimeJtrInitEnds(System.nanoTime());
 
 		if (exitcode < 0) {
 			System.out.println("JtrInit failed.");
@@ -192,7 +230,7 @@ public class Perf {
 		}
 
 		new Thread(timeKeeper).start();
-		
+
 		if (rank < broadcasters) {
 			while (!measurementDone) {
 

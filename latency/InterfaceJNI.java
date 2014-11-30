@@ -1,4 +1,4 @@
-package latency;
+package perf;
 
 import trains.Counters;
 import trains.Interface;
