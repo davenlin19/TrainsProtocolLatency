@@ -1,6 +1,6 @@
 package perf;
 
-import java.awt.TrayIcon.MessageType;
+import java.nio.ByteBuffer;
 import java.util.concurrent.Semaphore;
 
 import trains.CallbackCircuitChange;
@@ -15,6 +15,7 @@ public class Perf {
 	// static boolean sender;
 	static int broadcasters;
 	static int delayBetweenTwoUtoBroadcast = 1; // millis
+	static int frequencyOfPing = 10000;
 	// static int nbRecMsgBeforeStop;
 	static int nbRecMsg = 0;
 	static boolean measurementDone;
@@ -27,6 +28,8 @@ public class Perf {
 
 	final static int AM_PING = 0;
 	final static int AM_PONG = 1;
+
+	static TimeKeeper timeKeeper;
 
 	public static class myCallbackCircuitChange implements
 			CallbackCircuitChange {
@@ -97,35 +100,63 @@ public class Perf {
 		@Override
 		public void run(int sender, Message msg) {
 
-			if (msg.getMessageHeader().getType() == AM_PING) {
-				if (trin.JgetMyAddress() == pingResponder) {
-					Message pongMsg = new Message(new MessageHeader(msg
-							.getMessageHeader().getLen(), AM_PONG),
-							msg.getPayload());
-					int rc = trin.JutoBroadcast(pongMsg);					
-					// if (rc < 0) {
-					// System.out.println("JutoBroadcast failed.");
-					// return;
-					// }
-				}
-				// System.out.println("AM_PING, pingResponder = " +
-				// pingResponder + ", myAddr = " + trin.JgetMyAddress());
-			} else if (msg.getMessageHeader().getType() == AM_PONG) {
-				// msg.getPayload().
-				// memcpy(&pingSender, mp->payload, sizeof(address));
-				// if (pingSender == myAddress) {
-				// memcpy(&sendDate, mp->payload + sizeof(address),
-				// sizeof(struct timeval));
-				// gettimeofday(&receiveDate, NULL );
-				// timersub(&receiveDate, &sendDate, &latency);
-				//
-				// if (measurementPhase) {
-				// recordValue(latency, &record);
-				// }
-				//
-				// }
-				System.out.println("AM_PONG");
+			byte[] payload = msg.getPayload();
+			byte[] payLoadTypeMsgArr = new byte[4];
+			byte[] payLoadRankMsgArr = new byte[4];
+			byte[] payLoadAddrArr = new byte[4];
+			byte[] payLoadSendTimeArr1 = new byte[4];
+			byte[] payLoadSendTimeArr2 = new byte[4];
+			int i;
+			for (i = 0; i < 4; i++) {
+				payLoadTypeMsgArr[i] = payload[i];
 			}
+			for (i = 0; i < 4; i++) {
+				payLoadRankMsgArr[i] = payload[i + 4];
+			}
+
+			int payLoadTypeMsg = ByteBuffer.wrap(payLoadTypeMsgArr).getInt();
+			int payLoadRankMsg = ByteBuffer.wrap(payLoadRankMsgArr).getInt();
+			
+			if (payLoadTypeMsg == AM_PING) {
+				for (i = 0; i < 4; i++) {
+					payLoadAddrArr[i] = payload[i + 8];
+				}
+				for (i = 0; i < 4; i++) {
+					payLoadSendTimeArr1[i] = payload[i + 16];
+				}
+				for (i = 0; i < 4; i++) {
+					payLoadSendTimeArr2[i] = payload[i + 24];
+				}
+				int payLoadAddr = ByteBuffer.wrap(payLoadAddrArr).getInt();				
+				int payLoadSendTime = ByteBuffer.wrap(payLoadSendTimeArr1).getInt() * 1000000 + ByteBuffer.wrap(payLoadSendTimeArr2).getInt(); 
+				// if (trin.JgetMyAddress() == pingResponder) {
+				// Message pongMsg = new Message(new MessageHeader(msg
+				// .getMessageHeader().getLen(), AM_PONG),
+				// msg.getPayload());
+				// int rc = trin.JutoBroadcast(pongMsg);
+				// if (rc < 0) {
+				// System.out.println("JutoBroadcast failed.");
+				// System.exit(0);
+				// }
+				// }
+				// System.out.println("AM_PING, pingResponder = " + //
+				// pingResponder + ", myAddr = " + trin.JgetMyAddress());
+				System.out.println("PING with rank = " + payLoadRankMsg + ", addr = " + payLoadAddr + ", sendTime = " + payLoadSendTime);
+			} else if (payLoadTypeMsg == AM_PONG) {
+				// int pingSender = msg.getPayload()[2];
+				// if (pingSender == trin.JgetMyAddress()) {
+				// int sendDate = msg.getPayload()[3];
+				// int receiveDate = (int) System.nanoTime();
+				// int latency = receiveDate - sendDate;
+				// if (timeKeeper.isMeasurementPhase()) {
+				// LatencyData.recordValue(latency);
+				// }
+				// }
+				// System.out.println("AM_PONG");
+			}
+			//
+			// System.out.println("Message " + msg.getPayload().length + "#"
+			// + msg.getPayload()[0]);
 
 			nbRecMsg++;
 
@@ -174,6 +205,7 @@ public class Perf {
 		Message msg = null;
 		int exitcode;
 		int i = 0;
+		int pingMessagesCounter = 0;
 		int maxConcurrentRequests = 1;
 
 		rank = 0;
@@ -206,9 +238,9 @@ public class Perf {
 		// timeKeeper.setTimeLoadInterfaceBegins(System.nanoTime());
 		// timeKeeper.setTimeLoadInterfaceEnds(System.nanoTime());
 
-		TimeKeeper timeKeeper = new TimeKeeper.Builder(trin, broadcasters,
-				number, size).warmup(warmup).measurement(measurement)
-				.cooldown(cooldown).build();
+		timeKeeper = new TimeKeeper.Builder(trin, broadcasters, number, size)
+				.warmup(warmup).measurement(measurement).cooldown(cooldown)
+				.build();
 
 		timeKeeper.setTimeJtrInitBegins(System.nanoTime());
 
@@ -234,11 +266,58 @@ public class Perf {
 		if (rank < broadcasters) {
 			while (!measurementDone) {
 
-				payload = Message.IntToByteArray(rankMessage);
-				if (payload == null) {
-					System.out
-							.println("Converting payload to byte array failed.");
-					return;
+				if (pingMessagesCounter == 0) {
+					byte[] byteTypeMessage = ByteBuffer.allocate(4)
+							.putInt(AM_PING).array();
+					byte[] byteRankMessage = ByteBuffer.allocate(4)
+							.putInt(rankMessage).array();
+					byte[] byteMyAddress = ByteBuffer.allocate(4)
+							.putInt(trin.JgetMyAddress()).array();
+					long sysTime = System.nanoTime();
+					int sysTime1 = (int) sysTime / 1000000;
+					int sysTime2 = (int) (sysTime - sysTime1 * 1000000);
+					byte[] byteSendDate1 = ByteBuffer.allocate(4)
+							.putInt(sysTime1).array();
+					byte[] byteSendDate2 = ByteBuffer.allocate(4)
+							.putInt(sysTime2).array();
+					payload = new byte[20];
+					int countPayLoad = 0, countByte = 0;
+					for (countByte = 0; countByte < 4; countByte++) {
+						payload[countPayLoad] = byteTypeMessage[countByte];
+						countPayLoad++;
+					}
+					for (countByte = 0; countByte < 4; countByte++) {
+						payload[countPayLoad] = byteRankMessage[countByte];
+						countPayLoad++;
+					}
+					for (countByte = 0; countByte < 4; countByte++) {
+						payload[countPayLoad] = byteMyAddress[countByte];
+						countPayLoad++;
+					}
+					for (countByte = 0; countByte < 4; countByte++) {
+						payload[countPayLoad] = byteSendDate1[countByte];
+						countPayLoad++;
+					}
+					for (countByte = 0; countByte < 4; countByte++) {
+						payload[countPayLoad] = byteSendDate2[countByte];
+						countPayLoad++;
+					}
+				} else {
+					byte[] byteTypeMessage = ByteBuffer.allocate(4)
+							.putInt(AM_PONG).array();
+					byte[] byteRankMessage = ByteBuffer.allocate(4)
+							.putInt(rankMessage).array();
+					payload = new byte[8];
+					int countPayLoad = 0, countByte = 0;
+					for (countByte = 0; countByte < 4; countByte++) {
+						payload[countPayLoad] = byteTypeMessage[countByte];
+						countPayLoad++;
+					}
+					for (countByte = 0; countByte < 4; countByte++) {
+						payload[countPayLoad] = byteRankMessage[countByte];
+						countPayLoad++;
+					}
+
 				}
 
 				msg = Message.messageFromPayload(payload);
@@ -251,6 +330,9 @@ public class Perf {
 				trin.Jnewmsg(msg.getPayload().length, msg.getPayload());
 
 				rankMessage++;
+
+				pingMessagesCounter = (pingMessagesCounter + 1)
+						% frequencyOfPing;
 
 				exitcode = trin.JutoBroadcast(msg);
 				if (exitcode < 0) {
@@ -277,4 +359,5 @@ public class Perf {
 		System.out.println("\n*********************\n");
 		// System.exit(0);
 	}
+
 }
