@@ -44,9 +44,7 @@ public class LatencyData {
 
 		// Calculation of the variance
 		for (i = 0; i < currentRecordsNb; i++) {
-
 			calculatedVariance += ((floatRecords[i] - calculatedMean) * (floatRecords[i] - calculatedMean));
-
 		}
 		calculatedVariance /= currentRecordsNb;
 		variance = calculatedVariance;

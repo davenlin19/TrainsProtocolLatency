@@ -8,7 +8,6 @@ import trains.CallbackUtoDeliver;
 import trains.CircuitView;
 import trains.Interface;
 import trains.Message;
-import trains.MessageHeader;
 
 public class Perf {
 
@@ -129,8 +128,7 @@ public class Perf {
 				if (trin.JgetMyAddress() == pingResponder) {									
 
 					payload[3] = 1;
-					Message pongMsg = new Message(new MessageHeader(msg
-							.getMessageHeader().getLen(), AM_PONG), payload);
+					Message pongMsg = new Message(null, payload);
 					int rc = trin.JutoBroadcast(pongMsg);
 					if (rc < 0) {
 						System.out.println("JutoBroadcast failed.");
@@ -147,17 +145,8 @@ public class Perf {
 					}
 				}
 			}
-			//
-			// System.out.println("Message " + msg.getPayload().length + "#"
-			// + msg.getPayload()[0]);
 
 			nbRecMsg++;
-
-			/*
-			 * String content = new String(msg.getPayload());
-			 * System.out.println("!!! " + nbRecMsg + "-ieme message (recu de "
-			 * + sender + " / contenu = " + content + ")");
-			 */
 		}
 	}
 
@@ -208,7 +197,7 @@ public class Perf {
 		int cooldown = 1; /* Default value = 10 seconds */
 		int measurement = 10; /* Default value = 600 seconds */
 		int number = 2;
-		int size = 10;
+		int size = 100;
 		int warmup = 1; /* Default value = 300 seconds */
 		measurementDone = false;
 
