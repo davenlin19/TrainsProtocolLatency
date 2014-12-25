@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<project basedir="." default="build" name="TrainsProtocolJava">
+
+  <description>
+    Compile JNI Java classes and related C libraries for the trains protocol
+  </description>
+
+  <property name="src" value="src"/>
+  <property name="bin" value="bin"/>
+  <property name="trains" value="src/trains"/>
+  <property name="examples" value="src/examples"/>
+  <property name="perf" value="src/perf"/>
+
+  <target name="help">
+    <echo>Here are the commands you can perform:</echo>
+    <echo>Cleaning: </echo>
+    <echo>    * clean          - delete bin/ directory </echo>
+    <echo></echo>
+    <echo>Building: </echo>
+    <echo>    * build          - compile trains package and build the jar file TrainsProtocol.jar</echo>
+    <echo>    * build-examples - compile the examples package (needs the TrainsProtocol.jar file) </echo>
+    <echo>    * build-perf     - compile the perf package (needs the TrainsProtocol.jar file)</echo>
+    <echo>    * build-all      - compile all the source code and build the jar file TrainsProtocol.jar</echo>
+    <echo></echo>
+    <echo>Building and running examples:</echo>
+    <echo>    * examples       - build the examples package and run examples/Example.java</echo>
+    <echo>    * perf           - build the perf package and run perf/Perf.java</echo>
+    <echo></echo>
+    <echo>Running examples:</echo>
+    <echo>    * run-examples    - run the examples/Example.java</echo>
+    <echo>    * run-perf       - run the perf/Perf.java</echo>
+    <echo></echo>
+    <echo></echo>
+  </target>  
+
+  <target name="init">
+    <!-- Create the time stamp -->
+    <tstamp/>
+    <!-- Create the bin directory structure used by compile -->
+    <mkdir dir="${bin}"/>
+  </target>  
+	  
+  <target name="build-all">
+    <antcall target="clean"/>
+    <antcall target="build"/>
+    <antcall target="build-examples"/>
+    <antcall target="build-perf"/>
+  </target>
+	
+  <target name="examples">
+    <antcall target="build-examples"/>
+    <antcall target="run-examples"/>
+  </target>
+	
+  <target name="perf">
+	<antcall target="build-perf"/>
+	<antcall target="run-perf"/>
+  </target>
+	
+  <target name="build" depends="init" description="compile the source in src/trains" >
+    <antcall target="build-trains"/>
+    <antcall target="build-jar"/>
+  </target>
+
+  <path id="project.classpath">
+    <pathelement location="bin"/>
+  </path>
+
+  <target name="clean">
+    <delete dir="${bin}"/>
+  </target>		
+	
+  <target name="build-trains" description="Build trains jar">
+    <javac srcdir="${trains}"
+ 	   destdir="${bin}"
+  	   includes="CallbackCircuitChange.java, CallbackUtoDeliver.java, CircuitView.java, Counters.java,
+  					Interface.java, Message.java, MessageHeader.java, MessageType.java"/>
+    <exec dir="." executable="/bin/sh">
+      <arg line="script.sh"/>
+    </exec>
+  </target> 
+		
+  <target name="build-jar" description="Build jar archive" >
+    <jar destfile="${bin}/TrainsProtocol.jar"
+     basedir="${bin}"
+     includes="${bin}/trains"/>
+  </target>
+  	
+  <target name="build-examples" 
+    description="Build examples">
+      <javac classpath="${bin}/TrainsProtocol.jar:."
+       srcdir="${examples}"
+  	   destdir="${bin}"
+   	   includes="Example.java"/>
+  </target> 	
+	
+  <target name="build-perf" 
+	 description="Build perf">
+    <javac classpath="${bin}/TrainsProtocol.jar:."
+	  srcdir="${perf}"
+	  destdir="${bin}"
+	  includes="Perf.java, TimeKeeper.java, InterfaceJNI.java, LatencyData.java"/>
+    <exec dir="TrainsProtocol/tests/integration/JNIperf" executable="/bin/sh">
+      <arg line="script.sh"/>
+    </exec>
+  </target> 	
+  	
+  <target name="run-examples" description="run Java examples">
+	  <java fork="false"
+	  	classpath="${bin}:."
+	    failonerror="true"
+	    classname="examples.Example">
+ 	    <sysproperty key="java.library.path" path="/home/ec2-user/TrainsProtocolJava/TrainsProtocol/lib"/>
+	    <env key="TRAINS_HOST" value="ec2-54-93-40-152.eu-central-1.compute.amazonaws.com"/>
+	  </java>
+  </target>
+
+  <target name="run-perf" description="run Java perf program">
+	 <java fork="on"
+      classpath="${bin}:."
+	  failonerror="true"
+	  classname="perf.Perf">
+ 	    <sysproperty key="java.library.path" path="TrainsProtocol/lib"/>
+	    <env key="TRAINS_HOST" value="localhost"/>
+     </java>
+  </target>
+	
+</project>
+

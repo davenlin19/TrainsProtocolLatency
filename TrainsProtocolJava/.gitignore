@@ -1,0 +1,10 @@
+*.class
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
+# All that is generated
+src/perf_InterfaceJNI.h
+src/trains_Interface.h
