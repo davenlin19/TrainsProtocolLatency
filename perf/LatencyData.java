@@ -3,8 +3,8 @@ package perf;
 public class LatencyData {
 
 	public static int currentRecordsNb = 0;
-	public static int maxRecordsNb = 512;
-	public static int timevalRecords[] = new int[512];
+	public static int maxRecordsNb = 20000;
+	public static int timevalRecords[] = new int[20000];
 	public static double mean = 0, variance = 0;
 	public static double standardDeviation = 0, min95confidenceInterval = 0,
 			max95confidenceInterval = 0, min99confidenceInterval = 0,
@@ -12,11 +12,11 @@ public class LatencyData {
 
 	static int recordValue(int value) {
 
-		if (currentRecordsNb == maxRecordsNb) {
-			maxRecordsNb *= 2;
-			// timevalRecords = realloc(pingRec->timevalRecords,
-			// pingRec->maxRecordsNb * sizeof(struct timeval));
-		}
+		// if (currentRecordsNb == maxRecordsNb) {
+		// maxRecordsNb *= 2;
+		// // timevalRecords = realloc(pingRec->timevalRecords,
+		// // pingRec->maxRecordsNb * sizeof(struct timeval));
+		// }
 
 		timevalRecords[currentRecordsNb] = value;
 		currentRecordsNb++;

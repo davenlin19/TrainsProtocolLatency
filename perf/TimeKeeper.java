@@ -29,9 +29,9 @@ public class TimeKeeper implements Runnable {
 		private final int size;
 
 		// Optional parameters - initialized with default values
-		private int warmup = 300;
-		private int measurement = 600;
-		private int cooldown = 10;
+		private int warmup = 2;
+		private int measurement = 10;
+		private int cooldown = 1;
 
 		public Builder(Interface trin, int broadcasters, int number, int size) {
 			this.trin = trin;
@@ -88,8 +88,9 @@ public class TimeKeeper implements Runnable {
 			// System.out.println("warmup");
 			Thread.sleep(this.warmup * 1000);
 			// System.out.println("timeBegins");
-
+			System.out.println("RankMessage - Begin : " + Perf.rankMessage);
 			timeBegins = (int) (System.nanoTime() / 1000000);
+			System.out.println("TimeBegins = " + timeBegins);
 			// System.out.println("getrusageBegin");
 			perfin.JgetrusageBegin();
 			// System.out.println("JsetcountersBegin");
@@ -99,7 +100,9 @@ public class TimeKeeper implements Runnable {
 
 			Thread.sleep(this.measurement * 1000);
 
+			System.out.println("RankMessage - End : " + Perf.rankMessage);
 			timeEnds = (int) (System.nanoTime() / 1000000);
+			System.out.println("TimeEnds = " + timeEnds);
 			perfin.JgetrusageEnd();
 			perfin.JsetcountersEnd(trin);
 
@@ -199,13 +202,13 @@ public class TimeKeeper implements Runnable {
 
 		System.out.println("Time for LoadInterface (in sec): "
 				+ (this.timeLoadInterfaceEnds - this.timeLoadInterfaceBegins)
-				/ 1000000000d);
+				/ 1000d);
 		System.out
 				.println("Time for JtrInit (in sec): "
 						+ (this.timeJtrInitEnds - this.timeJtrInitBegins)
-						/ 1000000000d);
+						/ 1000000d);
 		System.out.println("Elasped time (in sec): " + (timeEnds - timeBegins)
-				/ 1000000000d);
+				/ 1000d);
 
 		System.out.println("ru_utime: " + perfin.Jgetru_utime() / 1000000d);
 		System.out.println("su_utime: " + perfin.Jgetru_stime() / 1000000d);
@@ -252,7 +255,7 @@ public class TimeKeeper implements Runnable {
 						+ perfin.JgetflowControl());
 
 		System.out
-				.println("\nBroadcasters / number / size / ntr / Average number of delivered wagons per recent train received / Average number of msg per wagon / Throughput of uto-broadcasts in Mbps ; "
+				.println("\nBroadcasters / number / size / ntr / Average number of delivered wagons per recent train received / Average number of msg per wagon / Throughput of uto-broadcasts in Mbits per minute ; "
 						+ broadcasters
 						+ " ; "
 						+ number
@@ -265,8 +268,8 @@ public class TimeKeeper implements Runnable {
 						+ perfin.Jgetmessages_delivered()
 						/ perfin.Jgetwagons_delivered()
 						+ " ; "
-						+ perfin.Jgetmessages_bytes_delivered()
-						/ ((timeEnds - timeBegins)) + "\n");
+						+ perfin.Jgetmessages_bytes_delivered()*8*60
+						/ ((timeEnds - timeBegins)*1000) + "\n");
 
 		// Latency results
 
