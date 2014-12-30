@@ -96,7 +96,7 @@ public class TimeKeeper implements Runnable {
 			measurementPhase = true;
 			// System.out.println("measurment");
 
-			Thread.sleep(this.measurement * 10 * 1000);
+			Thread.sleep(this.measurement * 1000);
 
 			timeEnds = (int) (System.nanoTime() / 1000000);
 			perfin.JgetrusageEnd();
@@ -251,7 +251,7 @@ public class TimeKeeper implements Runnable {
 						+ perfin.JgetflowControl());
 
 		System.out
-				.println("\nBroadcasters / number / size / ntr / Average number of delivered wagons per recent train received / Average number of msg per wagon / Throughput of uto-broadcasts in Mbits per minute ; "
+				.println("\nBroadcasters / number / size / ntr / Average number of delivered wagons per recent train received / Average number of msg per wagon / Throughput of uto-broadcasts in Mbps ; "
 						+ broadcasters
 						+ " ; "
 						+ number
@@ -264,7 +264,7 @@ public class TimeKeeper implements Runnable {
 						+ perfin.Jgetmessages_delivered()
 						/ perfin.Jgetwagons_delivered()
 						+ " ; "
-						+ perfin.Jgetmessages_bytes_delivered()*8*60
+						+ perfin.Jgetmessages_bytes_delivered()*8
 						/ ((timeEnds - timeBegins)*1000) + "\n");
 
 		// Latency results
