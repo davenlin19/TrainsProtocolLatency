@@ -88,9 +88,7 @@ public class TimeKeeper implements Runnable {
 			// System.out.println("warmup");
 			Thread.sleep(this.warmup * 1000);
 			// System.out.println("timeBegins");
-			System.out.println("RankMessage - Begin : " + Perf.rankMessage);
 			timeBegins = (int) (System.nanoTime() / 1000000);
-			System.out.println("TimeBegins = " + timeBegins);
 			// System.out.println("getrusageBegin");
 			perfin.JgetrusageBegin();
 			// System.out.println("JsetcountersBegin");
@@ -98,11 +96,9 @@ public class TimeKeeper implements Runnable {
 			measurementPhase = true;
 			// System.out.println("measurment");
 
-			Thread.sleep(this.measurement * 1000);
+			Thread.sleep(this.measurement * 10 * 1000);
 
-			System.out.println("RankMessage - End : " + Perf.rankMessage);
 			timeEnds = (int) (System.nanoTime() / 1000000);
-			System.out.println("TimeEnds = " + timeEnds);
 			perfin.JgetrusageEnd();
 			perfin.JsetcountersEnd(trin);
 
