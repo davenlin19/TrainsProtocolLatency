@@ -14,7 +14,7 @@ public class Perf {
 	// static boolean sender;
 	static int broadcasters;
 	static int delayBetweenTwoUtoBroadcast = 1; // millis
-	static int frequencyOfPing = 10000;
+	static int frequencyOfPing = 100;
 	// static int nbRecMsgBeforeStop;
 	static int nbRecMsg = 0;
 	static boolean measurementDone;
@@ -126,12 +126,14 @@ public class Perf {
 			int payLoadTypeMsg = getTypeMessage(payload);
 
 			if (payLoadTypeMsg == AM_PING) {
-				byte[] payLoadAddrArr = new byte[4];
+				byte[] payLoadRankMsgArr = new byte[4];
 				for (i = 0; i < 4; i++) {
-					payLoadAddrArr[i] = payload[i + 8];
+					payLoadRankMsgArr[i] = payload[i + 4];
 				}
-				int payLoadAddr = ByteBuffer.wrap(payLoadAddrArr).getInt();
-				if (trin.JgetMyAddress() == pingResponder) {
+				int payLoadRankMsg = ByteBuffer.wrap(payLoadRankMsgArr)
+						.getInt();				
+								
+				if (trin.JgetMyAddress() == pingResponder) {					
 					setTypeMessage(payload, AM_PONG);
 					Message pongMsg = Message.messageFromPayload(payload);
 					if (pongMsg == null) {
@@ -152,7 +154,7 @@ public class Perf {
 					payLoadRankMsgArr[i] = payload[i + 4];
 				}
 				int payLoadRankMsg = ByteBuffer.wrap(payLoadRankMsgArr)
-						.getInt();
+						.getInt();				
 				byte[] payLoadAddrArr = new byte[4];
 				for (i = 0; i < 4; i++) {
 					payLoadAddrArr[i] = payload[i + 8];
@@ -164,10 +166,13 @@ public class Perf {
 				}
 				int payLoadSendTime = ByteBuffer.wrap(payLoadSendTimeArr)
 						.getInt();
-				if (payLoadAddr == trin.JgetMyAddress()) {
+				if (payLoadAddr == trin.JgetMyAddress()) {					
 					int sendDate = payLoadSendTime;
 					int receiveDate = (int) (System.nanoTime() / 1000000);
 					int latency = receiveDate - sendDate;
+					if (payLoadRankMsg == 0) {
+						System.out.println("AM_PONG - Message 0 - Adr " + trin.JgetMyAddress() + " - Latency " + latency);
+					}
 					if (timeKeeper.isMeasurementPhase()) {
 						LatencyData.recordValue(latency);
 					}
