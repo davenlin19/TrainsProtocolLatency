@@ -161,8 +161,9 @@ public class Perf {
 				}
 				int payLoadSendTime = ByteBuffer.wrap(payLoadSendTimeArr)
 						.getInt();
-				
-				arrMsg.add(new MessageTwitter(newMsgAddress, newMsgRank, refMsgID, refMsgRank, payLoadSendTime));
+
+				arrMsg.add(new MessageTwitter(newMsgAddress, newMsgRank,
+						refMsgID, refMsgRank, payLoadSendTime));
 
 				int receiveDate = (int) (System.nanoTime() / 1000000);
 				int latency = receiveDate - payLoadSendTime;
@@ -178,7 +179,8 @@ public class Perf {
 				}
 
 				if (i == arrMsg.size()) {
-					System.out.println("Error!!!!!!!!!!!! refMsgID = " + refMsgID + ", refMsgRank = " + refMsgRank);
+					System.out.println("Error!!!!!!!!!!!! refMsgID = "
+							+ refMsgID + ", refMsgRank = " + refMsgRank);
 				}
 
 			}
@@ -277,7 +279,7 @@ public class Perf {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		
+
 		System.out.println("B");
 
 		new Thread(timeKeeper).start();
