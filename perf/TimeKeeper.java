@@ -199,10 +199,8 @@ public class TimeKeeper implements Runnable {
 		System.out.println("Time for LoadInterface (in sec): "
 				+ (this.timeLoadInterfaceEnds - this.timeLoadInterfaceBegins)
 				/ 1000d);
-		System.out
-				.println("Time for JtrInit (in sec): "
-						+ (this.timeJtrInitEnds - this.timeJtrInitBegins)
-						/ 1000000d);
+		System.out.println("Time for JtrInit (in sec): "
+				+ (this.timeJtrInitEnds - this.timeJtrInitBegins) / 1000000d);
 		System.out.println("Elasped time (in sec): " + (timeEnds - timeBegins)
 				/ 1000d);
 
@@ -251,7 +249,7 @@ public class TimeKeeper implements Runnable {
 						+ perfin.JgetflowControl());
 
 		System.out
-				.println("\nBroadcasters / number / size / ntr / Average number of delivered wagons per recent train received / Average number of msg per wagon / Throughput of uto-broadcasts in Mbps ; "
+				.println("\nBroadcasters / number / size / ntr / Average number of delivered wagons per recent train received / Average number of msg per wagon / Throughput of uto-broadcasts in Mbpm ; "
 						+ broadcasters
 						+ " ; "
 						+ number
@@ -264,8 +262,9 @@ public class TimeKeeper implements Runnable {
 						+ perfin.Jgetmessages_delivered()
 						/ perfin.Jgetwagons_delivered()
 						+ " ; "
-						+ perfin.Jgetmessages_bytes_delivered()*8
-						/ ((timeEnds - timeBegins)*1000) + "\n");
+						+ (perfin.Jgetmessages_bytes_delivered()*8 / 1000)
+						* 60
+						/ (timeEnds - timeBegins) + "\n");
 
 		// Latency results
 
