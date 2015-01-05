@@ -14,7 +14,7 @@ public class Perf {
 	// static boolean sender;
 	static int broadcasters;
 	static int delayBetweenTwoUtoBroadcast = 1; // millis
-	static int frequencyOfPing = 100;
+	static int frequencyOfPing = 10;
 	// static int nbRecMsgBeforeStop;
 	static int nbRecMsg = 0;
 	static boolean measurementDone;

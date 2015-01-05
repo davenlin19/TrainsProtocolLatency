@@ -96,7 +96,7 @@ public class TimeKeeper implements Runnable {
 			measurementPhase = true;
 			// System.out.println("measurment");
 
-			Thread.sleep(this.measurement * 1000);
+			Thread.sleep(this.measurement * 1000 * 10);
 
 			timeEnds = (int) (System.nanoTime() / 1000000);
 			perfin.JgetrusageEnd();
@@ -262,9 +262,8 @@ public class TimeKeeper implements Runnable {
 						+ perfin.Jgetmessages_delivered()
 						/ perfin.Jgetwagons_delivered()
 						+ " ; "
-						+ (perfin.Jgetmessages_bytes_delivered()*8 / 1000)
-						* 60
-						/ (timeEnds - timeBegins) + "\n");
+						+ (perfin.Jgetmessages_bytes_delivered() * 8 / 1000)
+						* 60 / (timeEnds - timeBegins) + "\n");
 
 		// Latency results
 
