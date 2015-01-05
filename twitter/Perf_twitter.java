@@ -163,11 +163,11 @@ public class Perf {
 						.getInt();
 
 				arrMsg.add(new MessageTwitter(newMsgAddress, newMsgRank,
-						refMsgID, refMsgRank, payLoadSendTime));
+						refMsgID, refMsgRank, payLoadSendTime));				
 
 				int receiveDate = (int) (System.nanoTime() / 1000000);
 				int latency = receiveDate - payLoadSendTime;
-				if (timeKeeper.isMeasurementPhase()) {
+				if (timeKeeper.isMeasurementPhase()) {					
 					LatencyData.recordValue(latency);
 				}
 
@@ -304,9 +304,9 @@ public class Perf {
 
 				int countPayLoad = 0, countByte = 0;
 				if (pingMessagesCounter == 0) {
-					if (arrMsg.size() > 0) {
-						int r = (int) Math.random() * arrMsg.size();
-						MessageTwitter msgRef = arrMsg.get(r);
+					if (arrMsg.size() > 0) {						
+						int r = (int) (Math.random() * arrMsg.size());
+						MessageTwitter msgRef = arrMsg.get(r);						
 						int sysTime = (int) (System.nanoTime() / 1000000);
 						byteTypeMessage = ByteBuffer.allocate(4)
 								.putInt(AM_PING).array();
@@ -316,9 +316,9 @@ public class Perf {
 						byteRankNewMessage = ByteBuffer.allocate(4)
 								.putInt(localCount).array();
 						byteIDRefMessage = ByteBuffer.allocate(4)
-								.putInt(msgRef.getId_ref()).array();
+								.putInt(msgRef.getId()).array();
 						byteRankRefMessage = ByteBuffer.allocate(4)
-								.putInt(msgRef.getRefCount()).array();
+								.putInt(msgRef.getLocalCount()).array();
 						byteSendDate = ByteBuffer.allocate(4).putInt(sysTime)
 								.array();
 						for (countByte = 0; countByte < 4; countByte++) {
