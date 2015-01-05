@@ -167,7 +167,7 @@ public class Perf {
 
 				int receiveDate = (int) (System.nanoTime() / 1000000);
 				int latency = receiveDate - payLoadSendTime;
-				if (timeKeeper.isMeasurementPhase()) {					
+				if (timeKeeper.isMeasurementPhase() && newMsgAddress == trin.JgetMyAddress()) {					
 					LatencyData.recordValue(latency);
 				}
 
