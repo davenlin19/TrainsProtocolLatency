@@ -90,6 +90,8 @@ int warmup                 = 300; /* Default value = 300 seconds */
 
 char s[MAX_LEN_ADDRESS_AS_STR];
 char s1[MAX_LEN_ADDRESS_AS_STR];
+char s2[MAX_LEN_ADDRESS_AS_STR];
+char s3[MAX_LEN_ADDRESS_AS_STR];
 
 struct MessageTwitter {
 	address idMsg;
@@ -230,24 +232,26 @@ void callbackUtoDeliver(address sender, message *mp){
 
   if (mp->header.typ == AM_PING) {
 
-	  struct MessageTwitter newMsg;	  
+	  struct MessageTwitter newMsg;
 	  memcpy(&newMsg.idMsg, mp->payload, sizeof(address));
 	  memcpy(&newMsg.localCount, mp->payload + sizeof(address), sizeof(int));
 	  memcpy(&newMsg.id_ref, mp->payload + sizeof(address) + sizeof(int), sizeof(address));
 	  memcpy(&newMsg.refCount, mp->payload + 2*sizeof(address) + sizeof(int), sizeof(int));
 	  memcpy(&sendDate, mp->payload + 2*sizeof(address) + 2*sizeof(int), sizeof(struct timeval));
-	  newMsg.heure = sendDate;
-	 
-	  arrMsg[nbMsgTwitter] = newMsg;
+	  newMsg.heure = sendDate;	  
+
+	  arrMsg[nbMsgTwitter] = newMsg;	  
+
 	  nbMsgTwitter++;
 
-	  gettimeofday(&receiveDate, NULL );
-      timersub(&receiveDate, &sendDate, &latency);
+	  if(addrIsMine(newMsg.idMsg)) {		  
+		  gettimeofday(&receiveDate, NULL);
+		  timersub(&receiveDate, &sendDate, &latency);
 
-	  if (measurementPhase) {
-        recordValue(latency, &record);
-      }	  
-    
+		  if (measurementPhase) {
+		    recordValue(latency, &record);
+		  }	  
+	  }    
   }
   nbRecMsg++;
 
@@ -292,16 +296,27 @@ void *timeKeeper(void *null){
 
   // check twitter result
   int i, j;
+  printf("nbMsgTwitter = %d\n", nbMsgTwitter);
+  int countError = 0;
   for (i = 1; i < nbMsgTwitter; i++) {
     for(j=0; j<i; j++) {
 		if (arrMsg[j].idMsg == arrMsg[i].id_ref && arrMsg[j].localCount == arrMsg[i].refCount) {
 			break;
 		}
-	}	
+	}
 	if (i == j) {
-		printf("Error!!! newMsg: idMsg = %s, localCount = %d, id_ref = %s, refCount = %d\n", addrToStr(s, arrMsg[i].idMsg), arrMsg[i].localCount, addrToStr(s1, arrMsg[i].id_ref), arrMsg[i].refCount);
+		printf("Error!!!\n");
+		++countError;
+		printf("\tarrMsg[%d]: idMsg = %s, localCount = %d, id_ref = %s, refCount = %d\n", i, addrToStr(s, arrMsg[i].idMsg), arrMsg[i].localCount, addrToStr(s1, arrMsg[i].id_ref), arrMsg[i].refCount);
+		for(j=0; j<nbMsgTwitter; j++) {
+			if (arrMsg[j].idMsg == arrMsg[i].id_ref && arrMsg[j].localCount == arrMsg[i].refCount && i != j) {								
+				printf("\tarrMsg[%d]: idMsg = %s, localCount = %d, id_ref = %s, refCount = %d\n", j, addrToStr(s, arrMsg[j].idMsg), arrMsg[j].localCount, addrToStr(s1, arrMsg[j].id_ref), arrMsg[j].refCount);
+				break;
+			}
+		}		
 	}
   }  
+  printf("NbError = %d\n", countError);
 
   // We display the results
   printf(
@@ -392,7 +407,7 @@ void *timeKeeper(void *null){
 void startTest(){
   int rc;
   int rankMessage = 0;
-  int localCount = 1;
+  int localCount = 0;
   pthread_t thread;
   int pingMessagesCounter = 0;
   record = newPingRecord();
@@ -403,8 +418,9 @@ void startTest(){
 
   address firstAddr = 1<<0;
   gettimeofday(&timeNow, NULL );
-  newMsg.idMsg = firstAddr; newMsg.localCount = 0; newMsg.id_ref = firstAddr; newMsg.refCount = 0; newMsg.heure = timeNow;  
+  newMsg.idMsg = firstAddr; newMsg.localCount = localCount; newMsg.id_ref = firstAddr; newMsg.refCount = 0; newMsg.heure = timeNow;
   arrMsg[nbMsgTwitter] = newMsg;
+  localCount++;
   nbMsgTwitter++;
   int r;
 
@@ -449,19 +465,15 @@ void startTest(){
           trError_at_line(rc, trErrno, __FILE__, __LINE__, "newPingMsg()");
           exit(EXIT_FAILURE);
         }
-		r = rand() % nbMsgTwitter;
-		// printf("r = %d, nbMsgTwitter = %d\n", r, nbMsgTwitter);
-		refMsg = arrMsg[r];
+		r = rand() % nbMsgTwitter;		
+		refMsg = arrMsg[r];		
 		newMsg.idMsg = myAddress;
 		newMsg.localCount = localCount;
 		newMsg.id_ref = refMsg.idMsg;
 		newMsg.refCount = refMsg.localCount;
 		gettimeofday(&sendTime, NULL);
 		newMsg.heure = sendTime;
-		/* printf("RefMsg: idMsg = %s, localCount = %d, id_ref = %s, refCount = %d\n", addrToStr(s, refMsg.idMsg), refMsg.localCount, addrToStr(s1, refMsg.id_ref), refMsg.refCount);
-		printf("SendNewMsg: idMsg = %s, localCount = %d, id_ref = %s, refCount = %d\n", addrToStr(s, newMsg.idMsg), newMsg.localCount, addrToStr(s1, newMsg.id_ref), newMsg.refCount); */
-		arrMsg[nbMsgTwitter] = newMsg;
-		nbMsgTwitter++;
+
         rankMessage++;
         mp->header.typ = AM_PING;
         
