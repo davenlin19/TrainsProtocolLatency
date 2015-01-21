@@ -55,7 +55,6 @@ int waitNb = 0;
 int lis; //last id sent
 ltsArray lts; //last trains sent
 trList* unstableWagons[MAX_NTR][NR];
-trList* twitterToDeliverWagons[MAX_NTR][NR];
 trBqueue* wagonsToDeliver;
 int ntr=1;
 int waitNbMax=10 ;
@@ -172,7 +171,6 @@ void automatonInit(){
     (lts[id]).p_wtosend = NULL;
     for (round = 0; round < NR; round++) {
       unstableWagons[id][round] = newList();
-	  twitterToDeliverWagons[id][round] = newList();
     }
   }
   cameProc = 0;
@@ -198,13 +196,31 @@ void trainHandling(womim *p_womim){
   if (round == lts[id].stamp.round) {
     round = (round + 1) % NR;
   }
-#ifdef UNIFORM_BROADCAST
+#if defined(UNIFORM_BROADCAST)
   bqueueExtend(wagonsToDeliver, unstableWagons[id][(round - 2 + NR) % NR]);
   cleanList(unstableWagons[id][(round - 2 + NR) % NR]);
-#else /* NON_UNIFORM_BROADCAST OR TWITTER_CAUSALITE */
+#elif defined(NON_UNIFORM_BROADCAST) /* NON_UNIFORM_BROADCAST */
   bqueueExtend(wagonsToDeliver, unstableWagons[id][(round - 1 + NR) % NR]);
   cleanList(unstableWagons[id][(round - 1 + NR) % NR]);
 #endif /* UNIFORM_BROADCAST */
+
+  /*int i = 0, j = 0;
+  if(counters.recent_trains_received < 20) {
+	printf("=== UnstableWagons ===\n");
+	for(i=0; i<2; i++) {
+		printf("\t => %d\n", i);
+		j = 0;
+		LINK *link;
+		link = unstableWagons[0][i]->first;
+		while (link && link->value) {
+			printf("\t\t%d: %s\n", j, link->value);
+			link=link->next;
+			++j;
+		}
+	}
+	// printf("WagonsToDeliver:: first: %p, last: %p\n", wagonsToDeliver->list->first, wagonsToDeliver->list->last);
+  }*/
+
   if (id == 0) {
     lts[0].circuit = addrUpdateCircuit(p_womim->msg.body.train.circuit,
         myAddress, cameProc, goneProc);
@@ -233,7 +249,11 @@ void trainHandling(womim *p_womim){
       MUTEX_LOCK(p_womim->pfx.mutex);
       p_womim->pfx.counter++;
       MUTEX_UNLOCK(p_womim->pfx.mutex);
-      listAppend(unstableWagons[id][round], wi);
+	  #ifdef TWITTER_CAUSALITE /* TWITTER_CAUSALITE */
+		bqueueEnqueue(wagonsToDeliver, wi);
+	  #else /* UNIFORM_BROADCAST OR NON_UNIFORM_BROADCAST */
+      	listAppend(unstableWagons[id][round], wi);
+	  #endif
 
       // Shall this wagon be sent to our successor
       if (!addrIsEqual(succ,p_wag->header.sender)) {
@@ -266,7 +286,7 @@ void trainHandling(womim *p_womim){
     // wagonToSend->p_wagon->pfx.counter
     wagonToSend->p_womim->pfx.counter++;
 	#ifdef TWITTER_CAUSALITE   /* TWITTER_CAUSALITE */
-		listAppend(twitterToDeliverWagons[id][round], wi);
+		bqueueEnqueue(wagonsToDeliver, wi);
 	#else /* UNIFORM OR NON_UNIFORM BROADCAST */
 		listAppend(unstableWagons[id][round], wi);
 	#endif /* TWITTER_CAUSALITE */
@@ -275,11 +295,6 @@ void trainHandling(womim *p_womim){
 
     wagonToSend = newWiw();
   }
-
-  #ifdef TWITTER_CAUSALITE   /* TWITTER_CAUSALITE */
-  	bqueueExtend(wagonsToDeliver, twitterToDeliverWagons[id][round]);
-  	cleanList(twitterToDeliverWagons[id][round]);
-  #endif /* TWITTER_CAUSALITE */
 
   MUTEX_UNLOCK(mutexWagonToSend);
   pthread_cond_signal(&condWagonToSend);
