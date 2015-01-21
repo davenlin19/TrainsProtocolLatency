@@ -11,6 +11,8 @@
   <property name="trains" value="src/trains"/>
   <property name="examples" value="src/examples"/>
   <property name="perf" value="src/perf"/>
+  <property name="latency" value="src/latency"/>
+  <property name="twitter" value="src/twitter"/>
 
   <target name="help">
     <echo>Here are the commands you can perform:</echo>
@@ -21,15 +23,21 @@
     <echo>    * build          - compile trains package and build the jar file TrainsProtocol.jar</echo>
     <echo>    * build-examples - compile the examples package (needs the TrainsProtocol.jar file) </echo>
     <echo>    * build-perf     - compile the perf package (needs the TrainsProtocol.jar file)</echo>
+    <echo>    * build-latency  - compile the latency package (needs the TrainsProtocol.jar file)</echo>
+    <echo>    * build-twitter  - compile the twitter package (needs the TrainsProtocol.jar file)</echo>
     <echo>    * build-all      - compile all the source code and build the jar file TrainsProtocol.jar</echo>
     <echo></echo>
     <echo>Building and running examples:</echo>
     <echo>    * examples       - build the examples package and run examples/Example.java</echo>
     <echo>    * perf           - build the perf package and run perf/Perf.java</echo>
+    <echo>    * latency           - build the latency package and run latency/Latency.java</echo>
+    <echo>    * twitter           - build the twitter package and run twitter/Twitter.java</echo>
     <echo></echo>
     <echo>Running examples:</echo>
-    <echo>    * run-examples    - run the examples/Example.java</echo>
+    <echo>    * run-examples   - run the examples/Example.java</echo>
     <echo>    * run-perf       - run the perf/Perf.java</echo>
+    <echo>    * run-latency       - run the latency/Latency.java</echo>
+    <echo>    * run-twitter       - run the twitter/Twitter.java</echo>
     <echo></echo>
     <echo></echo>
   </target>  
@@ -46,6 +54,8 @@
     <antcall target="build"/>
     <antcall target="build-examples"/>
     <antcall target="build-perf"/>
+    <antcall target="build-latency"/>
+    <antcall target="build-twitter"/>
   </target>
 	
   <target name="examples">
@@ -57,7 +67,17 @@
 	<antcall target="build-perf"/>
 	<antcall target="run-perf"/>
   </target>
-	
+
+  <target name="latency">
+	<antcall target="build-latency"/>
+	<antcall target="run-latency"/>
+  </target>
+
+  <target name="twitter">
+	<antcall target="build-twitter"/>
+	<antcall target="run-twitter"/>
+  </target>
+  
   <target name="build" depends="init" description="compile the source in src/trains" >
     <antcall target="build-trains"/>
     <antcall target="build-jar"/>
@@ -100,19 +120,41 @@
     <javac classpath="${bin}/TrainsProtocol.jar:."
 	  srcdir="${perf}"
 	  destdir="${bin}"
-	  includes="Perf.java, TimeKeeper.java, InterfaceJNI.java, LatencyData.java"/>
+	  includes="Perf.java, TimeKeeper.java, InterfaceJNI.java"/>
+    <exec dir="TrainsProtocol/tests/integration/JNIperf" executable="/bin/sh">
+      <arg line="script.sh"/>
+    </exec>
+  </target> 	
+
+  <target name="build-latency" 
+	 description="Build latency">
+    <javac classpath="${bin}/TrainsProtocol.jar:."
+	  srcdir="${latency}"
+	  destdir="${bin}"
+	  includes="Latency.java, TimeKeeper.java, LatencyData.java"/>
+    <exec dir="TrainsProtocol/tests/integration/JNIperf" executable="/bin/sh">
+      <arg line="script.sh"/>
+    </exec>
+  </target> 	
+
+  <target name="build-twitter" 
+	 description="Build twitter">
+    <javac classpath="${bin}/TrainsProtocol.jar:."
+	  srcdir="${twitter}"
+	  destdir="${bin}"
+	  includes="Twitter.java, TimeKeeper.java, MessageTwitter.java"/>
     <exec dir="TrainsProtocol/tests/integration/JNIperf" executable="/bin/sh">
       <arg line="script.sh"/>
     </exec>
   </target> 	
   	
   <target name="run-examples" description="run Java examples">
-	  <java fork="false"
+	  <java fork="on"
 	  	classpath="${bin}:."
 	    failonerror="true"
 	    classname="examples.Example">
- 	    <sysproperty key="java.library.path" path="/home/ec2-user/TrainsProtocolJava/TrainsProtocol/lib"/>
-	    <env key="TRAINS_HOST" value="ec2-54-93-40-152.eu-central-1.compute.amazonaws.com"/>
+ 	    <sysproperty key="java.library.path" path="TrainsProtocol/lib"/>
+	    <env key="TRAINS_HOST" value="localhost"/>
 	  </java>
   </target>
 
@@ -125,6 +167,26 @@
 	    <env key="TRAINS_HOST" value="localhost"/>
      </java>
   </target>
-	
+
+  <target name="run-latency" description="run Java latency program">
+	 <java fork="on"
+      classpath="${bin}:."
+	  failonerror="true"
+	  classname="latency.Latency">
+ 	    <sysproperty key="java.library.path" path="TrainsProtocol/lib"/>
+	    <env key="TRAINS_HOST" value="localhost"/>
+     </java>
+  </target>
+
+  <target name="run-twitter" description="run Java twitter program">
+	 <java fork="on"
+      classpath="${bin}:."
+	  failonerror="true"
+	  classname="twitter.Twitter">
+ 	    <sysproperty key="java.library.path" path="TrainsProtocol/lib"/>
+	    <env key="TRAINS_HOST" value="localhost"/>
+     </java>
+  </target>
+  
 </project>
 

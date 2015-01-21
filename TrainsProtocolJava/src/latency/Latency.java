@@ -1,4 +1,4 @@
-package perf;
+package latency;
 
 import java.nio.ByteBuffer;
 import java.util.concurrent.Semaphore;
@@ -9,8 +9,9 @@ import trains.CircuitView;
 import trains.Interface;
 import trains.Message;
 
-public class Perf {
+import perf.InterfaceJNI;
 
+public class Latency {
 	// static boolean sender;
 	static int broadcasters;
 	static int delayBetweenTwoUtoBroadcast = 1; // millis
@@ -126,14 +127,7 @@ public class Perf {
 			int payLoadTypeMsg = getTypeMessage(payload);
 
 			if (payLoadTypeMsg == AM_PING) {
-				byte[] payLoadRankMsgArr = new byte[4];
-				for (i = 0; i < 4; i++) {
-					payLoadRankMsgArr[i] = payload[i + 4];
-				}
-				int payLoadRankMsg = ByteBuffer.wrap(payLoadRankMsgArr)
-						.getInt();				
-								
-				if (trin.JgetMyAddress() == pingResponder) {					
+				if (trin.JgetMyAddress() == pingResponder) {
 					setTypeMessage(payload, AM_PONG);
 					Message pongMsg = Message.messageFromPayload(payload);
 					if (pongMsg == null) {
@@ -154,7 +148,7 @@ public class Perf {
 					payLoadRankMsgArr[i] = payload[i + 4];
 				}
 				int payLoadRankMsg = ByteBuffer.wrap(payLoadRankMsgArr)
-						.getInt();				
+						.getInt();
 				byte[] payLoadAddrArr = new byte[4];
 				for (i = 0; i < 4; i++) {
 					payLoadAddrArr[i] = payload[i + 8];
@@ -166,13 +160,10 @@ public class Perf {
 				}
 				int payLoadSendTime = ByteBuffer.wrap(payLoadSendTimeArr)
 						.getInt();
-				if (payLoadAddr == trin.JgetMyAddress()) {					
+				if (payLoadAddr == trin.JgetMyAddress()) {
 					int sendDate = payLoadSendTime;
 					int receiveDate = (int) (System.nanoTime() / 1000000);
 					int latency = receiveDate - sendDate;
-					if (payLoadRankMsg == 0) {
-						System.out.println("AM_PONG - Message 0 - Adr " + trin.JgetMyAddress() + " - Latency " + latency);
-					}
 					if (timeKeeper.isMeasurementPhase()) {
 						LatencyData.recordValue(latency);
 					}
@@ -185,7 +176,7 @@ public class Perf {
 	public static void main(String args[]) {
 
 		// Trying to use environment variables to get the values of the
-		// parameters for a use of a script for the perf tests
+		// parameters for a use of a script for the latency tests
 
 		/*
 		 * String nomBroadcaster = System.getenv("BROADCASTERS"); String
@@ -285,7 +276,7 @@ public class Perf {
 			while (!measurementDone) {
 
 				byte[] byteTypeMessage;
-				int countPayLoad = 0, countByte = 0;				
+				int countPayLoad = 0, countByte = 0;
 				if (pingMessagesCounter == 0) {
 					byteTypeMessage = ByteBuffer.allocate(4).putInt(AM_PING)
 							.array();
@@ -311,16 +302,16 @@ public class Perf {
 						payload[countPayLoad] = byteSendDate[countByte];
 						countPayLoad++;
 					}
-					
+
 				} else {
-					byteTypeMessage = ByteBuffer.allocate(4).putInt(AM_BROADCAST)
-							.array();
+					byteTypeMessage = ByteBuffer.allocate(4)
+							.putInt(AM_BROADCAST).array();
 					for (countByte = 0; countByte < 4; countByte++) {
 						payload[countPayLoad] = byteTypeMessage[countByte];
 						countPayLoad++;
 					}
 				}
-				
+
 				msg = Message.messageFromPayload(payload);
 
 				if (msg == null) {

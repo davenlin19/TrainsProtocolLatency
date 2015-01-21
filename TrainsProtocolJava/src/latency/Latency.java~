@@ -1,8 +1,6 @@
-package perf;
+package latency;
 
 import java.nio.ByteBuffer;
-import java.util.ArrayList;
-import java.util.Random;
 import java.util.concurrent.Semaphore;
 
 import trains.CallbackCircuitChange;
@@ -11,8 +9,9 @@ import trains.CircuitView;
 import trains.Interface;
 import trains.Message;
 
-public class Perf {
+import perf.InterfaceJNI;
 
+public class Latency {
 	// static boolean sender;
 	static int broadcasters;
 	static int delayBetweenTwoUtoBroadcast = 1; // millis
@@ -33,8 +32,6 @@ public class Perf {
 
 	static TimeKeeper timeKeeper;
 	static int rankMessage = 0;
-
-	static ArrayList<MessageTwitter> arrMsg = new ArrayList<>();
 
 	public static class myCallbackCircuitChange implements
 			CallbackCircuitChange {
@@ -130,59 +127,54 @@ public class Perf {
 			int payLoadTypeMsg = getTypeMessage(payload);
 
 			if (payLoadTypeMsg == AM_PING) {
-
-				byte[] payLoadNewMsgID = new byte[4];
+				byte[] payLoadRankMsgArr = new byte[4];
 				for (i = 0; i < 4; i++) {
-					payLoadNewMsgID[i] = payload[i + 4];
+					payLoadRankMsgArr[i] = payload[i + 4];
 				}
-				int newMsgAddress = ByteBuffer.wrap(payLoadNewMsgID).getInt();
-
-				byte[] payLoadNewMsgRank = new byte[4];
+				int payLoadRankMsg = ByteBuffer.wrap(payLoadRankMsgArr)
+						.getInt();				
+								
+				if (trin.JgetMyAddress() == pingResponder) {					
+					setTypeMessage(payload, AM_PONG);
+					Message pongMsg = Message.messageFromPayload(payload);
+					if (pongMsg == null) {
+						System.out.println("Creating a message failed.");
+						return;
+					}
+					trin.Jnewmsg(pongMsg.getPayload().length,
+							pongMsg.getPayload());
+					int exitcode = trin.JutoBroadcast(pongMsg);
+					if (exitcode < 0) {
+						System.out.println("JutoBroadcast failed.");
+						return;
+					}
+				}
+			} else if (payLoadTypeMsg == AM_PONG) {
+				byte[] payLoadRankMsgArr = new byte[4];
 				for (i = 0; i < 4; i++) {
-					payLoadNewMsgRank[i] = payload[i + 8];
+					payLoadRankMsgArr[i] = payload[i + 4];
 				}
-				int newMsgRank = ByteBuffer.wrap(payLoadNewMsgRank).getInt();
-
-				byte[] payLoadRefMsgID = new byte[4];
+				int payLoadRankMsg = ByteBuffer.wrap(payLoadRankMsgArr)
+						.getInt();				
+				byte[] payLoadAddrArr = new byte[4];
 				for (i = 0; i < 4; i++) {
-					payLoadRefMsgID[i] = payload[i + 12];
+					payLoadAddrArr[i] = payload[i + 8];
 				}
-				int refMsgID = ByteBuffer.wrap(payLoadRefMsgID).getInt();
-
-				byte[] payLoadRefMsgRank = new byte[4];
-				for (i = 0; i < 4; i++) {
-					payLoadRefMsgRank[i] = payload[i + 16];
-				}
-				int refMsgRank = ByteBuffer.wrap(payLoadRefMsgRank).getInt();
-
+				int payLoadAddr = ByteBuffer.wrap(payLoadAddrArr).getInt();
 				byte[] payLoadSendTimeArr = new byte[4];
 				for (i = 0; i < 4; i++) {
-					payLoadSendTimeArr[i] = payload[i + 20];
+					payLoadSendTimeArr[i] = payload[i + 12];
 				}
 				int payLoadSendTime = ByteBuffer.wrap(payLoadSendTimeArr)
 						.getInt();
-
-				arrMsg.add(new MessageTwitter(newMsgAddress, newMsgRank,
-						refMsgID, refMsgRank, payLoadSendTime));				
-
-				int receiveDate = (int) (System.nanoTime() / 1000000);
-				int latency = receiveDate - payLoadSendTime;
-				if (timeKeeper.isMeasurementPhase() && newMsgAddress == trin.JgetMyAddress()) {					
-					LatencyData.recordValue(latency);
-				}
-
-				for (i = 0; i < arrMsg.size(); i++) {
-					if (arrMsg.get(i).getId() == refMsgID
-							&& arrMsg.get(i).getLocalCount() == refMsgRank) {
-						break;
+				if (payLoadAddr == trin.JgetMyAddress()) {					
+					int sendDate = payLoadSendTime;
+					int receiveDate = (int) (System.nanoTime() / 1000000);
+					int latency = receiveDate - sendDate;
+					if (timeKeeper.isMeasurementPhase()) {
+						LatencyData.recordValue(latency);
 					}
 				}
-
-				if (i == arrMsg.size()) {
-					System.out.println("Error!!!!!!!!!!!! refMsgID = "
-							+ refMsgID + ", refMsgRank = " + refMsgRank);
-				}
-
 			}
 			nbRecMsg++;
 		}
@@ -191,7 +183,7 @@ public class Perf {
 	public static void main(String args[]) {
 
 		// Trying to use environment variables to get the values of the
-		// parameters for a use of a script for the perf tests
+		// parameters for a use of a script for the latency tests
 
 		/*
 		 * String nomBroadcaster = System.getenv("BROADCASTERS"); String
@@ -223,6 +215,7 @@ public class Perf {
 		byte[] payload = null;
 		Message msg = null;
 		int exitcode;
+		int i = 0;
 		int pingMessagesCounter = 0;
 		int maxConcurrentRequests = 1;
 
@@ -273,90 +266,59 @@ public class Perf {
 			return;
 		}
 
-		System.out.println("A");
 		try {
 			semWaitEnoughMembers.acquire();
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
 
-		System.out.println("B");
-
 		new Thread(timeKeeper).start();
 
 		payload = new byte[size];
-
-		byte[] byteTypeMessage;
 		byte[] byteMyAddress = ByteBuffer.allocate(4)
 				.putInt(trin.JgetMyAddress()).array();
-		byte[] byteRankNewMessage;
-		byte[] byteIDRefMessage;
-		byte[] byteRankRefMessage;
+		byte[] byteRankMessage;
 		byte[] byteSendDate;
-
-		System.out.println("C");
-		arrMsg.add(new MessageTwitter(0, 0, 0, 0, 0));
-		System.out.println("D");
-		int localCount = 1;
-
 		if (rank < broadcasters) {
 			while (!measurementDone) {
 
-				int countPayLoad = 0, countByte = 0;
+				byte[] byteTypeMessage;
+				int countPayLoad = 0, countByte = 0;				
 				if (pingMessagesCounter == 0) {
-					if (arrMsg.size() > 0) {						
-						int r = (int) (Math.random() * arrMsg.size());
-						MessageTwitter msgRef = arrMsg.get(r);						
-						int sysTime = (int) (System.nanoTime() / 1000000);
-						byteTypeMessage = ByteBuffer.allocate(4)
-								.putInt(AM_PING).array();
-						MessageTwitter newMsg = new MessageTwitter(
-								trin.JgetMyAddress(), localCount,
-								msgRef.getId(), msgRef.getLocalCount(), sysTime);
-						byteRankNewMessage = ByteBuffer.allocate(4)
-								.putInt(localCount).array();
-						byteIDRefMessage = ByteBuffer.allocate(4)
-								.putInt(msgRef.getId()).array();
-						byteRankRefMessage = ByteBuffer.allocate(4)
-								.putInt(msgRef.getLocalCount()).array();
-						byteSendDate = ByteBuffer.allocate(4).putInt(sysTime)
-								.array();
-						for (countByte = 0; countByte < 4; countByte++) {
-							payload[countPayLoad] = byteTypeMessage[countByte];
-							countPayLoad++;
-						}
-						for (countByte = 0; countByte < 4; countByte++) {
-							payload[countPayLoad] = byteMyAddress[countByte];
-							countPayLoad++;
-						}
-						for (countByte = 0; countByte < 4; countByte++) {
-							payload[countPayLoad] = byteRankNewMessage[countByte];
-							countPayLoad++;
-						}
-						for (countByte = 0; countByte < 4; countByte++) {
-							payload[countPayLoad] = byteIDRefMessage[countByte];
-							countPayLoad++;
-						}
-						for (countByte = 0; countByte < 4; countByte++) {
-							payload[countPayLoad] = byteRankRefMessage[countByte];
-							countPayLoad++;
-						}
-						for (countByte = 0; countByte < 4; countByte++) {
-							payload[countPayLoad] = byteSendDate[countByte];
-							countPayLoad++;
-						}
-						localCount++;
-					}
+					byteTypeMessage = ByteBuffer.allocate(4).putInt(AM_PING)
+							.array();
+					int sysTime = (int) (System.nanoTime() / 1000000);
+					byteSendDate = ByteBuffer.allocate(4).putInt(sysTime)
+							.array();
+					byteRankMessage = ByteBuffer.allocate(4)
+							.putInt(rankMessage).array();
 
+					for (countByte = 0; countByte < 4; countByte++) {
+						payload[countPayLoad] = byteTypeMessage[countByte];
+						countPayLoad++;
+					}
+					for (countByte = 0; countByte < 4; countByte++) {
+						payload[countPayLoad] = byteRankMessage[countByte];
+						countPayLoad++;
+					}
+					for (countByte = 0; countByte < 4; countByte++) {
+						payload[countPayLoad] = byteMyAddress[countByte];
+						countPayLoad++;
+					}
+					for (countByte = 0; countByte < 4; countByte++) {
+						payload[countPayLoad] = byteSendDate[countByte];
+						countPayLoad++;
+					}
+					
 				} else {
-					byteTypeMessage = ByteBuffer.allocate(4)
-							.putInt(AM_BROADCAST).array();
+					byteTypeMessage = ByteBuffer.allocate(4).putInt(AM_BROADCAST)
+							.array();
 					for (countByte = 0; countByte < 4; countByte++) {
 						payload[countPayLoad] = byteTypeMessage[countByte];
 						countPayLoad++;
 					}
 				}
-
+				
 				msg = Message.messageFromPayload(payload);
 
 				if (msg == null) {
@@ -380,6 +342,7 @@ public class Perf {
 				try {
 					Thread.sleep(delayBetweenTwoUtoBroadcast);
 				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}

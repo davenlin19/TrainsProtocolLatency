@@ -1,5 +1,6 @@
-cp ~/TrainsProtocolLatency/perf/*.java src/perf/
-cp ~/TrainsProtocolLatency/trains/*.java src/trains/
+cp ~/TrainsProtocolLatency/TrainsProtocolJava/src/perf/*.java src/perf/
+cp ~/TrainsProtocolLatency/TrainsProtocolJava/src/trains/*.java src/trains/
+cp ~/TrainsProtocolLatency/TrainsProtocolJava/src/twitter/*.java src/twitter/
 cp ~/TrainsProtocolLatency/TrainsProtocolJava/addr_file ./
 cp -rf ~/TrainsProtocolLatency/TrainsProtocolJava/bin ./
 cp ~/TrainsProtocolLatency/TrainsProtocolJava/build.xml ./

@@ -1,6 +1,8 @@
-package perf;
+package latency;
 
 import trains.Interface;
+
+import perf.InterfaceJNI;
 
 public class TimeKeeper implements Runnable {
 
@@ -96,7 +98,7 @@ public class TimeKeeper implements Runnable {
 			measurementPhase = true;
 			// System.out.println("measurment");
 
-			Thread.sleep(this.measurement * 1000 * 10);
+			Thread.sleep(this.measurement * 1000);
 
 			timeEnds = (int) (System.nanoTime() / 1000000);
 			perfin.JgetrusageEnd();
@@ -249,7 +251,7 @@ public class TimeKeeper implements Runnable {
 						+ perfin.JgetflowControl());
 
 		System.out
-				.println("\nBroadcasters / number / size / ntr / Average number of delivered wagons per recent train received / Average number of msg per wagon / Throughput of uto-broadcasts in Mbpm ; "
+				.println("\nBroadcasters / number / size / ntr / Average number of delivered wagons per recent train received / Average number of msg per wagon / Throughput of uto-broadcasts in Mbps ; "
 						+ broadcasters
 						+ " ; "
 						+ number
@@ -262,13 +264,13 @@ public class TimeKeeper implements Runnable {
 						+ perfin.Jgetmessages_delivered()
 						/ perfin.Jgetwagons_delivered()
 						+ " ; "
-						+ (perfin.Jgetmessages_bytes_delivered() * 8 / 1000)
-						* 60 / (timeEnds - timeBegins) + "\n");
+						+ perfin.Jgetmessages_bytes_delivered()
+						/ ((timeEnds - timeBegins) / 1000d) + "\n");
 
 		// Latency results
 
 		LatencyData.setStatistics();
-		if (Perf.rank >= broadcasters) {
+		if (Latency.rank >= broadcasters) {
 			System.out
 					.println("WARNING : This participant was not a broadcaster");
 			System.out.println("It didn't send any PING message");
@@ -306,7 +308,7 @@ public class TimeKeeper implements Runnable {
 	}
 
 	public void setMeasurementDone() {
-		Perf.measurementDone = true;
+		Latency.measurementDone = true;
 	}
 
 	public boolean isMeasurementPhase() {

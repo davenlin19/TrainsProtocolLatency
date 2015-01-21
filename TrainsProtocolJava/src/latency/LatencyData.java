@@ -1,4 +1,4 @@
-package perf;
+package latency;
 
 public class LatencyData {
 
@@ -10,7 +10,7 @@ public class LatencyData {
 			max95confidenceInterval = 0, min99confidenceInterval = 0,
 			max99confidenceInterval = 0;
 
-	static int recordValue(int value) {
+	public static int recordValue(int value) {
 
 		// if (currentRecordsNb == maxRecordsNb) {
 		// maxRecordsNb *= 2;
@@ -24,7 +24,7 @@ public class LatencyData {
 		return 0;
 	}
 
-	static int setStatistics() {
+	public static int setStatistics() {
 
 		int i;
 		double calculatedMean = 0;
