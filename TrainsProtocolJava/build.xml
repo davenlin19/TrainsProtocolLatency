@@ -6,13 +6,25 @@
     Compile JNI Java classes and related C libraries for the trains protocol
   </description>
 
+  <property environment="env"/>
+  <property name="glassfish.home" value="${env.GLASSFISH_HOME}"/>
   <property name="src" value="src"/>
   <property name="bin" value="bin"/>
+  <property name="lib" value="lib"/>
   <property name="trains" value="src/trains"/>
   <property name="examples" value="src/examples"/>
   <property name="perf" value="src/perf"/>
   <property name="latency" value="src/latency"/>
   <property name="twitter" value="src/twitter"/>
+  <property name="zamazon" value="src/zamazon"/>
+  <property name="twitterApp" value="src/twitterApp"/>
+
+  <path id="twitterApp-classpath">	
+	<fileset dir="lib">
+		<include name="*.jar"/>
+    </fileset>
+    <pathelement path="${build}"/>
+  </path>
 
   <target name="help">
     <echo>Here are the commands you can perform:</echo>
@@ -20,24 +32,30 @@
     <echo>    * clean          - delete bin/ directory </echo>
     <echo></echo>
     <echo>Building: </echo>
-    <echo>    * build          - compile trains package and build the jar file TrainsProtocol.jar</echo>
-    <echo>    * build-examples - compile the examples package (needs the TrainsProtocol.jar file) </echo>
-    <echo>    * build-perf     - compile the perf package (needs the TrainsProtocol.jar file)</echo>
-    <echo>    * build-latency  - compile the latency package (needs the TrainsProtocol.jar file)</echo>
-    <echo>    * build-twitter  - compile the twitter package (needs the TrainsProtocol.jar file)</echo>
-    <echo>    * build-all      - compile all the source code and build the jar file TrainsProtocol.jar</echo>
+    <echo>    * build             - compile trains package and build the jar file TrainsProtocol.jar</echo>
+    <echo>    * build-examples    - compile the examples package (needs the TrainsProtocol.jar file) </echo>
+    <echo>    * build-perf        - compile the perf package (needs the TrainsProtocol.jar file)</echo>
+    <echo>    * build-latency     - compile the latency package (needs the TrainsProtocol.jar file)</echo>
+    <echo>    * build-twitter     - compile the twitter package (needs the TrainsProtocol.jar file)</echo>
+	<echo>    * build-zamazon     - compile the zamazon package (needs the TrainsProtocol.jar file)</echo>
+	<echo>    * build-twitterApp  - compile the twitterApp package (needs the TrainsProtocol.jar file)</echo>
+    <echo>    * build-all         - compile all the source code and build the jar file TrainsProtocol.jar</echo>
     <echo></echo>
     <echo>Building and running examples:</echo>
-    <echo>    * examples       - build the examples package and run examples/Example.java</echo>
-    <echo>    * perf           - build the perf package and run perf/Perf.java</echo>
+    <echo>    * examples          - build the examples package and run examples/Example.java</echo>
+    <echo>    * perf              - build the perf package and run perf/Perf.java</echo>
     <echo>    * latency           - build the latency package and run latency/Latency.java</echo>
     <echo>    * twitter           - build the twitter package and run twitter/Twitter.java</echo>
+	<echo>    * zamazon           - build the zamazon package and run zamazon/Zamazon.java</echo>
+	<echo>    * twitterApp        - build the twitterApp package and run twitterApp/Twitter.java</echo>
     <echo></echo>
     <echo>Running examples:</echo>
-    <echo>    * run-examples   - run the examples/Example.java</echo>
-    <echo>    * run-perf       - run the perf/Perf.java</echo>
+    <echo>    * run-examples      - run the examples/Example.java</echo>
+    <echo>    * run-perf          - run the perf/Perf.java</echo>
     <echo>    * run-latency       - run the latency/Latency.java</echo>
     <echo>    * run-twitter       - run the twitter/Twitter.java</echo>
+    <echo>    * run-zamazon       - run the zamazon/Zamazon.java</echo>    
+    <echo>    * run-twitterApp    - run the twitterApp/Twitter.java</echo>    
     <echo></echo>
     <echo></echo>
   </target>  
@@ -56,6 +74,8 @@
     <antcall target="build-perf"/>
     <antcall target="build-latency"/>
     <antcall target="build-twitter"/>
+    <antcall target="build-zamazon"/>
+	<antcall target="build-twitterApp"/>
   </target>
 	
   <target name="examples">
@@ -76,6 +96,16 @@
   <target name="twitter">
 	<antcall target="build-twitter"/>
 	<antcall target="run-twitter"/>
+  </target>
+
+  <target name="zamazon">
+	<antcall target="build-zamazon"/>
+	<antcall target="run-zamazon"/>
+  </target>
+
+  <target name="twitterApp">
+	<antcall target="build-twitterApp"/>
+	<antcall target="run-twitterApp"/>
   </target>
   
   <target name="build" depends="init" description="compile the source in src/trains" >
@@ -147,6 +177,30 @@
       <arg line="script.sh"/>
     </exec>
   </target> 	
+
+  <target name="build-zamazon" 
+	 description="Build zamazon">
+    <javac classpath="${bin}/TrainsProtocol.jar:."
+	  srcdir="${zamazon}"
+	  destdir="${bin}"
+	  includes="Zamazon.java, TimeKeeper.java"/>
+    <exec dir="TrainsProtocol/tests/integration/JNIperf" executable="/bin/sh">
+      <arg line="script.sh"/>
+    </exec>
+  </target> 	
+
+  <target name="build-twitterApp" 
+	 description="Build twitterApp">
+    <javac classpath="${bin}/TrainsProtocol.jar:.:${lib}/mysql-connector-java-5.1.34-bin.jar"
+	  srcdir="${twitterApp}"
+	  destdir="${bin}"
+	  includes="Twitter.java, TimeKeeper.java, MessageTwitter.java">
+		<classpath refid="twitterApp-classpath"/>
+	</javac>
+    <exec dir="TrainsProtocol/tests/integration/JNIperf" executable="/bin/sh">
+      <arg line="script.sh"/>
+    </exec>
+  </target> 	
   	
   <target name="run-examples" description="run Java examples">
 	  <java fork="on"
@@ -183,6 +237,26 @@
       classpath="${bin}:."
 	  failonerror="true"
 	  classname="twitter.Twitter">
+ 	    <sysproperty key="java.library.path" path="TrainsProtocol/lib"/>
+	    <env key="TRAINS_HOST" value="localhost"/>
+     </java>
+  </target>
+
+  <target name="run-zamazon" description="run Java zamazon program">
+	 <java fork="on"
+      classpath="${bin}:."
+	  failonerror="true"
+	  classname="zamazon.Zamazon">
+ 	    <sysproperty key="java.library.path" path="TrainsProtocol/lib"/>
+	    <env key="TRAINS_HOST" value="localhost"/>
+     </java>
+  </target>
+
+  <target name="run-twitterApp" description="run Java twitterApp program">
+	 <java fork="on"
+      classpath="${bin}:.:${lib}/*"
+	  failonerror="true"
+	  classname="twitterApp.Twitter">
  	    <sysproperty key="java.library.path" path="TrainsProtocol/lib"/>
 	    <env key="TRAINS_HOST" value="localhost"/>
      </java>
