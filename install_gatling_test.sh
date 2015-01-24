@@ -20,12 +20,13 @@ unzip glassfish-4.0.zip
 export GLASSFISH_HOME=~/glassfish4/glassfish
 export PATH=$GLASSFISH_HOME/bin:$PATH
 export CLASSPATH=$GLASSFISH_HOME/lib/*:./:$CLASSPATH
+cp ~/TrainsProtocolLatency/TwitterServer.war ./
 
 cp -rf TrainsProtocolLatency/TwitterServerExtra/ ./
 git clone https://github.com/simatic/TrainsProtocol.git
 cd TrainsProtocol
 git checkout jni
-export LD_LIBRARY_PATH=/home/ubuntu/TrainsProtocol/lib:$LD_LIBRARY_PATH
+sudo export LD_LIBRARY_PATH=/home/ubuntu/TrainsProtocol/lib:$LD_LIBRARY_PATH
 cp ~/TrainsProtocolLatency/stateMachine.c src/
 cd tests/integration/latency/
 cp ~/TrainsProtocolLatency/latency_AppTwitter.c latency.c
