@@ -17,6 +17,7 @@ export JAVA_HOME=/usr/lib/jvm/java-7-oracle/
 
 wget http://download.java.net/glassfish/4.0/release/glassfish-4.0.zip
 unzip glassfish-4.0.zip
+rm glassfish-4.0.zip
 export GLASSFISH_HOME=~/glassfish4/glassfish
 export PATH=$GLASSFISH_HOME/bin:$PATH
 export CLASSPATH=$GLASSFISH_HOME/lib/*:./:$CLASSPATH
@@ -35,6 +36,7 @@ cd ~
 
 wget http://download.zeromq.org/zeromq-4.0.5.tar.gz
 tar xvfz zeromq-4.0.5.tar.gz
+rm zeromq-4.0.5.tar.gz
 cd zeromq-4.0.5
 sudo apt-get install build-essential g++
 ./configure
@@ -51,7 +53,13 @@ sudo make
 sudo make install
 export CLASSPATH=/usr/local/share/java/zmq.jar:$CLASSPATH
 export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
+cp /usr/local/share/java/zmq.jar ~/glassfish4/glassfish/lib/
 cd ~
+asadmin start-domain
+asadmin deploy TwitterServer.war
+asadmin change-admin-password (login = admin, password = "")
+asadmin enable-secure-admin
+asadmin set server.java-config.native-library-path-prefix=/home/ubuntu/glassfish4/glassfish/lib/
 
 sudo chown ubuntu:ubuntu -R TrainsProtocol
 sudo chown ubuntu:ubuntu -R glassfish4

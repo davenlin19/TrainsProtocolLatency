@@ -261,19 +261,19 @@ void callbackUtoDeliver(address sender, message *mp){
 		  }
 
 		  char str[100];
-		  sprintf(str, "%d#%d#%d#", newMsg.idMsg, newMsg.localCount, newMsg.heure);
+		  sprintf(str, "%d#%d#%d#", addrToRank(newMsg.idMsg), newMsg.localCount, newMsg.heure);
 		  zmq_send (requesterByMe, str, 100, 0);
 		  char bufferRecv[2];
 		  zmq_recv (requesterByMe, bufferRecv, 2, 0);
-		  printf("Receive confirm of newMsg sent by me\n");	  
+		  printf("Receive confirm of newMsg sent by me: %s\n", str);	  
 	  } else {
 		  char str[100];
-		  sprintf(str, "%d#%d#%d#%d#%d#", newMsg.idMsg, newMsg.localCount, newMsg.id_ref, newMsg.refCount, newMsg.heure);
+		  sprintf(str, "%d#%d#%d#%d#%d#", addrToRank(newMsg.idMsg), newMsg.localCount, addrToRank(newMsg.id_ref), newMsg.refCount, newMsg.heure);
 		  zmq_send (requesterByOthers, str, 100, 0);
 		  char bufferRecv[2];
 		  zmq_recv (requesterByOthers, bufferRecv, 2, 0);
-		  printf("Receive confirm of newMsg sent by others\n");
-	  } 
+		  printf("Receive confirm of newMsg sent by others: %s\n", str);
+	  }
   }
   nbRecMsg++;
 
@@ -492,6 +492,7 @@ void startTest() {
   requesterByOthers = zmq_socket (context, ZMQ_REQ);
   int rc_zmq;
   printf("My rank = %d\n", rank);
+  // add if run local
   // if(rank == 0) {
   	rc_zmq = zmq_bind (responder, "tcp://*:5555");
 	zmq_connect (requesterByMe, "tcp://localhost:5561");
@@ -514,7 +515,7 @@ void startTest() {
   if (rank < broadcasters) {
     // It is the case
     do {			
-		// if(rank == 0) {
+		// if(rank == 0) { // add if run local
 			// Wait request from TwitterServer
 			int sizeBuf = zmq_recv (responder, bufferRecv, 20, 0);
 			int * refMsgRecv = getMessageRef(bufferRecv, sizeBuf);
@@ -536,6 +537,8 @@ void startTest() {
 			newMsg.refCount = refMsg.localCount;
 			gettimeofday(&sendTime, NULL);
 			newMsg.heure = sendTime;
+
+			printf("Diffuser a msg: %s, %d, %s, %d\n", addrToStr(s, newMsg.idMsg), newMsg.localCount, addrToStr(s1, newMsg.id_ref), newMsg.refCount);
 
 		    rankMessage++;
 
