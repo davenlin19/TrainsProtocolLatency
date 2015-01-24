@@ -22,7 +22,6 @@ export GLASSFISH_HOME=~/glassfish4/glassfish
 export PATH=$GLASSFISH_HOME/bin:$PATH
 export CLASSPATH=$GLASSFISH_HOME/lib/*:./:$CLASSPATH
 
-git clone https://github.com/davenlin19/TrainsProtocolLatency.git
 git clone https://github.com/simatic/TrainsProtocol.git
 cd TrainsProtocol
 git checkout jni
