@@ -51,3 +51,8 @@ sudo make
 sudo make install
 export CLASSPATH=/usr/local/share/java/zmq.jar:$CLASSPATH
 export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
+cd ~
+
+sudo chown ubuntu:ubuntu -R TrainsProtocol
+sudo chown ubuntu:ubuntu -R glassfish4
+sudo chown ubuntu:ubuntu -R jzmq
