@@ -26,7 +26,7 @@ cp -rf TrainsProtocolLatency/TwitterServerExtra/ ./
 git clone https://github.com/simatic/TrainsProtocol.git
 cd TrainsProtocol
 git checkout jni
-sudo export LD_LIBRARY_PATH=/home/ubuntu/TrainsProtocol/lib:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=/home/ubuntu/TrainsProtocol/lib:$LD_LIBRARY_PATH
 cp ~/TrainsProtocolLatency/stateMachine.c src/
 cd tests/integration/latency/
 cp ~/TrainsProtocolLatency/latency_AppTwitter.c latency.c
@@ -56,3 +56,7 @@ cd ~
 sudo chown ubuntu:ubuntu -R TrainsProtocol
 sudo chown ubuntu:ubuntu -R glassfish4
 sudo chown ubuntu:ubuntu -R jzmq
+
+cp ~/TrainsProtocolLatency/set_env_gatling_test.sh ./
+sudo chmod +x set_env_gatling_test.sh
+source set_env_gatling_test.sh
