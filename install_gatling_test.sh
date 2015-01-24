@@ -1,5 +1,4 @@
 sudo apt-get update
-sudo apt-get install git
 sudo apt-get install gcc
 sudo apt-get install make
 sudo apt-get install unzip
@@ -22,6 +21,7 @@ export GLASSFISH_HOME=~/glassfish4/glassfish
 export PATH=$GLASSFISH_HOME/bin:$PATH
 export CLASSPATH=$GLASSFISH_HOME/lib/*:./:$CLASSPATH
 
+cp -rf TrainsProtocolLatency/TwitterServerExtra/ ./
 git clone https://github.com/simatic/TrainsProtocol.git
 cd TrainsProtocol
 git checkout jni
@@ -29,6 +29,7 @@ export LD_LIBRARY_PATH=/home/ubuntu/TrainsProtocol/lib:$LD_LIBRARY_PATH
 cp ~/TrainsProtocolLatency/stateMachine.c src/
 cd tests/integration/latency/
 cp ~/TrainsProtocolLatency/latency_AppTwitter.c latency.c
+cp ~/TrainsProtocolLatency/Makefile ./
 cd ~
 
 wget http://download.zeromq.org/zeromq-4.0.5.tar.gz
@@ -42,10 +43,10 @@ cd ~
 
 git clone https://github.com/zeromq/jzmq.git
 cd jzmq
-sudo apt-get install pkg-config libtool
-./autogen.sh
-./configure
-make
+sudo apt-get install pkg-config libtool autoconf automake
+sudo ./autogen.sh
+sudo ./configure
+sudo make
 sudo make install
 export CLASSPATH=/usr/local/share/java/zmq.jar:$CLASSPATH
 export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
