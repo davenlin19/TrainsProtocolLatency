@@ -55,11 +55,6 @@ export CLASSPATH=/usr/local/share/java/zmq.jar:$CLASSPATH
 export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
 cp /usr/local/share/java/zmq.jar ~/glassfish4/glassfish/lib/
 cd ~
-asadmin start-domain
-asadmin deploy TwitterServer.war
-asadmin change-admin-password (login = admin, password = "")
-asadmin enable-secure-admin
-asadmin set server.java-config.native-library-path-prefix=/home/ubuntu/glassfish4/glassfish/lib/
 
 sudo chown ubuntu:ubuntu -R TrainsProtocol
 sudo chown ubuntu:ubuntu -R glassfish4
