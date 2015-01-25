@@ -49,6 +49,7 @@
 #include "counter.h"
 #include "latencyData.h"
 #include "errorTrains.h"
+#include "connect.h"
 
 /* Semaphore used to block main thread until there are enough participants */
 static sem_t semWaitEnoughMembers;
@@ -67,7 +68,8 @@ bool measurementPhase = false;
 struct timeval timeTrInitBegin, timeTrInitEnd;
 
 /* Global variables of the program */
-pingRecord record;
+pingRecord recordOverhead;
+pingRecord recordLatency;
 address pingResponder;
 address pingSender;
 struct timeval sendTime, sendDate, receiveDate, latency;
@@ -103,6 +105,7 @@ struct MessageTwitter {
 
 struct MessageTwitter arrMsg[50000];
 int nbMsgTwitter = 0;
+static address mySucc;
 
 /* Description of long options for getopt_long.  */
 static const struct option longOptions[] = {
@@ -230,10 +233,11 @@ void callbackUtoDeliver(address sender, message *mp){
     exit(EXIT_FAILURE);
   }
 
-  if (mp->header.typ == AM_PING) {
+  struct MessageTwitter newMsg;
+  memcpy(&newMsg.idMsg, mp->payload, sizeof(address));
 
-	  struct MessageTwitter newMsg;
-	  memcpy(&newMsg.idMsg, mp->payload, sizeof(address));
+  if (mp->header.typ == AM_PING) {
+	  
 	  memcpy(&newMsg.localCount, mp->payload + sizeof(address), sizeof(int));
 	  memcpy(&newMsg.id_ref, mp->payload + sizeof(address) + sizeof(int), sizeof(address));
 	  memcpy(&newMsg.refCount, mp->payload + 2*sizeof(address) + sizeof(int), sizeof(int));
@@ -249,9 +253,32 @@ void callbackUtoDeliver(address sender, message *mp){
 		  timersub(&receiveDate, &sendDate, &latency);
 
 		  if (measurementPhase) {
-		    recordValue(latency, &record);
+		    recordValue(latency, &recordOverhead);
 		  }	  
-	  }    
+	  } 
+
+	  if((broadcasters > 2 && addrToRank(mySucc) == addrToRank(newMsg.idMsg)) || (broadcasters == 2 && addrToRank(myAddress) != addrToRank(newMsg.idMsg))) {		
+			// Send msg ACK to the processor after me
+			message *pongMsg = newmsg(size);
+	  		pongMsg->header.typ = AM_PONG;
+			memcpy(pongMsg->payload, mp->payload, size);
+			int rc;
+			if ((rc = utoBroadcast(pongMsg)) < 0) {
+				trError_at_line(rc, trErrno, __FILE__, __LINE__, "utoBroadcast()");
+				exit(EXIT_FAILURE);
+		    }
+	  }	     
+  } else if(mp->header.typ == AM_PONG) {	
+	if(addrIsMine(newMsg.idMsg)) {
+		// receives ACK messages
+		memcpy(&sendDate, mp->payload + 2*sizeof(address) + 2*sizeof(int), sizeof(struct timeval));
+		gettimeofday(&receiveDate, NULL);
+	  	timersub(&receiveDate, &sendDate, &latency);
+
+	  	if (measurementPhase) {
+	    	recordValue(latency, &recordLatency);
+	  	}
+	}
   }
   nbRecMsg++;
 
@@ -374,26 +401,44 @@ void *timeKeeper(void *null){
       ((double) (diffCPU.tv_sec * 1000000 + diffCPU.tv_usec)
           / (double) (diffTimeval.tv_sec * 1000000 + diffTimeval.tv_usec)));
 
-  // Latency results
+  // Overhead results
 
-  setStatistics(&record);
+  setStatistics(&recordOverhead);
   if (rank >= broadcasters) {
     printf("\nWARNING : This participant was not a broadcaster\n"
         "It didn't send any PING message\n");
   }
   printf("\n"
-      "Number of ping records during this experience : %u\n"
+      "Number of ping recordOverheads during this experience : %u\n"
+      "Average overhead  (ms)   : %.2lf\n"
+      "Variance                : %lf\n"
+      "Standard deviation      : %lf\n"
+      "95%% confidence interval : [%.2lf ; %.2lf]\n"
+      "99%% confidence interval : [%.2lf ; %.2lf]\n", recordOverhead.currentRecordsNb,
+      recordOverhead.mean, recordOverhead.variance, recordOverhead.standardDeviation,
+      recordOverhead.min95confidenceInterval, recordOverhead.max95confidenceInterval,
+      recordOverhead.min99confidenceInterval, recordOverhead.max99confidenceInterval);
+
+  // Latency results
+
+  setStatistics(&recordLatency);
+  if (rank >= broadcasters) {
+    printf("\nWARNING : This participant was not a broadcaster\n"
+        "It didn't send any PING message\n");
+  }
+  printf("\n"
+      "Number of ping recordLatency during this experience : %u\n"
       "Average latency  (ms)   : %.2lf\n"
       "Variance                : %lf\n"
       "Standard deviation      : %lf\n"
       "95%% confidence interval : [%.2lf ; %.2lf]\n"
-      "99%% confidence interval : [%.2lf ; %.2lf]\n", record.currentRecordsNb,
-      record.mean, record.variance, record.standardDeviation,
-      record.min95confidenceInterval, record.max95confidenceInterval,
-      record.min99confidenceInterval, record.max99confidenceInterval);
+      "99%% confidence interval : [%.2lf ; %.2lf]\n", recordLatency.currentRecordsNb,
+      recordLatency.mean, recordLatency.variance, recordLatency.standardDeviation,
+      recordLatency.min95confidenceInterval, recordLatency.max95confidenceInterval,
+      recordLatency.min99confidenceInterval, recordLatency.max99confidenceInterval);
 
   // Termination phase
-  freePingRecord(&record);
+  freePingRecord(&recordLatency);
   rc = trTerminate();
   if (rc < 0) {
     trError_at_line(rc, trErrno, __FILE__, __LINE__, "tr_init()");
@@ -410,7 +455,8 @@ void startTest(){
   int localCount = 0;
   pthread_t thread;
   int pingMessagesCounter = 0;
-  record = newPingRecord();
+  recordOverhead = newPingRecord();
+  recordLatency = newPingRecord();
 
   // arrMsg = (struct MessageTwitter *) malloc(2*sizeof(int) + 2*sizeof(address) + sizeof(struct timeval));
   struct MessageTwitter newMsg, refMsg;
@@ -453,6 +499,11 @@ void startTest(){
   rc = pthread_detach(thread);
   if (rc < 0)
     ERROR_AT_LINE(EXIT_FAILURE, rc, __FILE__, __LINE__, "pthread_detach");
+
+  // search for my successor
+  if(broadcasters > 2) {
+	mySucc = searchSucc(myAddress);  
+  }
 
   // We check if process should be a broadcasting process
   if (rank < broadcasters) {

@@ -101,7 +101,7 @@ struct MessageTwitter {
 	int localCount;
 	address id_ref;
 	int refCount;
-	struct timeval heure;
+	struct timeval sendDate;
 };
 
 struct MessageTwitter arrMsg[50000];
@@ -246,13 +246,19 @@ void callbackUtoDeliver(address sender, message *mp){
 	  memcpy(&newMsg.id_ref, mp->payload + sizeof(address) + sizeof(int), sizeof(address));
 	  memcpy(&newMsg.refCount, mp->payload + 2*sizeof(address) + sizeof(int), sizeof(int));
 	  memcpy(&sendDate, mp->payload + 2*sizeof(address) + 2*sizeof(int), sizeof(struct timeval));
-	  newMsg.heure = sendDate;
+	  newMsg.sendDate = sendDate;
 
 	  arrMsg[nbMsgTwitter] = newMsg;
 
 	  nbMsgTwitter++;
 
-	  if(addrIsMine(newMsg.idMsg)) {		  
+	  // convert time_val newMsg.sendDate to tm
+	  time_t timeSendDate = (time_t) newMsg.sendDate.tv_sec;
+   	  struct tm tm_time = *localtime (&timeSendDate);
+   	  char s_time[sizeof "AAAA-MM-JJ HH:MM:SS"];
+	  strftime (s_time, sizeof s_time, "%Y-%m-%d %H:%M:%S", &tm_time);
+
+	  if(addrIsMine(newMsg.idMsg)) {		  		  
 		  gettimeofday(&receiveDate, NULL);
 		  timersub(&receiveDate, &sendDate, &latency);
 
@@ -260,15 +266,17 @@ void callbackUtoDeliver(address sender, message *mp){
 		    recordValue(latency, &record);
 		  }
 
+		  // deliver new tweet to twitterWebApp
 		  char str[100];
-		  sprintf(str, "%d#%d#%d#", addrToRank(newMsg.idMsg), newMsg.localCount, newMsg.heure);
+		  sprintf(str, "%d#%d#%s#%ld#", addrToRank(newMsg.idMsg), newMsg.localCount, s_time, (latency.tv_sec*1000000+latency.tv_usec));
 		  zmq_send (requesterByMe, str, 100, 0);
 		  char bufferRecv[2];
 		  zmq_recv (requesterByMe, bufferRecv, 2, 0);
 		  printf("Receive confirm of newMsg sent by me: %s\n", str);	  
 	  } else {
+		  // deliver new tweet to twitterSync
 		  char str[100];
-		  sprintf(str, "%d#%d#%d#%d#%d#", addrToRank(newMsg.idMsg), newMsg.localCount, addrToRank(newMsg.id_ref), newMsg.refCount, newMsg.heure);
+		  sprintf(str, "%d#%d#%d#%d#%s#0#", addrToRank(newMsg.idMsg), newMsg.localCount, addrToRank(newMsg.id_ref), newMsg.refCount, s_time);
 		  zmq_send (requesterByOthers, str, 100, 0);
 		  char bufferRecv[2];
 		  zmq_recv (requesterByOthers, bufferRecv, 2, 0);
@@ -440,6 +448,7 @@ int getMsgTwitter(int id, int localCount) {
 			return i;
 		}
 	}
+	return 0;
 }
 
 void startTest() {
@@ -457,11 +466,10 @@ void startTest() {
 
   address firstAddr = 1<<0;
   gettimeofday(&timeNow, NULL );
-  newMsg.idMsg = firstAddr; newMsg.localCount = localCount; newMsg.id_ref = firstAddr; newMsg.refCount = 0; newMsg.heure = timeNow;
+  newMsg.idMsg = firstAddr; newMsg.localCount = localCount; newMsg.id_ref = firstAddr; newMsg.refCount = 0; newMsg.sendDate = timeNow;
   arrMsg[nbMsgTwitter] = newMsg;
   localCount++;
   nbMsgTwitter++;
-  int r;
 
   rc = sem_init(&semWaitEnoughMembers, 0, 0);
   if (rc)
@@ -492,14 +500,14 @@ void startTest() {
   requesterByOthers = zmq_socket (context, ZMQ_REQ);
   int rc_zmq;
   printf("My rank = %d\n", rank);
-  // add if run local
-  // if(rank == 0) {
+  // add if in local
+  if(rank == 0) {
   	rc_zmq = zmq_bind (responder, "tcp://*:5555");
 	zmq_connect (requesterByMe, "tcp://localhost:5561");
 	zmq_connect (requesterByOthers, "tcp://localhost:5562");
 	assert (rc_zmq == 0);
 	printf("ZMQServer started !\n");
-  // }
+  }
   
   char bufferRecv[8];    
 
@@ -515,7 +523,7 @@ void startTest() {
   if (rank < broadcasters) {
     // It is the case
     do {			
-		// if(rank == 0) { // add if run local
+		 if(rank == 0) { // add if in local
 			// Wait request from TwitterServer
 			int sizeBuf = zmq_recv (responder, bufferRecv, 20, 0);
 			int * refMsgRecv = getMessageRef(bufferRecv, sizeBuf);
@@ -536,7 +544,7 @@ void startTest() {
 			newMsg.id_ref = refMsg.idMsg;
 			newMsg.refCount = refMsg.localCount;
 			gettimeofday(&sendTime, NULL);
-			newMsg.heure = sendTime;
+			newMsg.sendDate = sendTime;
 
 			printf("Diffuser a msg: %s, %d, %s, %d\n", addrToStr(s, newMsg.idMsg), newMsg.localCount, addrToStr(s1, newMsg.id_ref), newMsg.refCount);
 
@@ -552,7 +560,7 @@ void startTest() {
 
 			memcpy((mp->payload) + 2*sizeof(address) + sizeof(int), &newMsg.refCount, sizeof(int));
 
-		    memcpy((mp->payload) + 2*sizeof(address) + 2*sizeof(int), &newMsg.heure, sizeof(struct timeval));
+		    memcpy((mp->payload) + 2*sizeof(address) + 2*sizeof(int), &newMsg.sendDate, sizeof(struct timeval));
 
 			localCount++;
 
@@ -561,7 +569,7 @@ void startTest() {
 				trError_at_line(rc, trErrno, __FILE__, __LINE__, "utoBroadcast()");
 				exit(EXIT_FAILURE);
 			}
-		// }
+		 }
 
     } while (1);
   } else {
