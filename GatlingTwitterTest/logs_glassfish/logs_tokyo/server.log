@@ -1,0 +1,816 @@
+[2015-01-26T01:03:38.959+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218959] [levelValue: 800] [[
+  Lvl = 2, idNew = 732]]
+
+[2015-01-26T01:03:38.959+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218959] [levelValue: 800] [[
+  AddNewJ = 409, i = 139]]
+
+[2015-01-26T01:03:38.959+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218959] [levelValue: 800] [[
+  Lvl = 2, idNew = 409]]
+
+[2015-01-26T01:03:38.959+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218959] [levelValue: 800] [[
+  AddNewJ = 623, i = 141]]
+
+[2015-01-26T01:03:38.959+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218959] [levelValue: 800] [[
+  Lvl = 2, idNew = 623]]
+
+[2015-01-26T01:03:38.959+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218959] [levelValue: 800] [[
+  AddNewJ = 778, i = 146]]
+
+[2015-01-26T01:03:38.959+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218959] [levelValue: 800] [[
+  Lvl = 2, idNew = 778]]
+
+[2015-01-26T01:03:38.959+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218959] [levelValue: 800] [[
+  AddNewJ = 731, i = 149]]
+
+[2015-01-26T01:03:38.959+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218959] [levelValue: 800] [[
+  Lvl = 2, idNew = 731]]
+
+[2015-01-26T01:03:38.959+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218959] [levelValue: 800] [[
+  AddNewJ = 694, i = 154]]
+
+[2015-01-26T01:03:38.959+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218959] [levelValue: 800] [[
+  Lvl = 2, idNew = 694]]
+
+[2015-01-26T01:03:38.959+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218959] [levelValue: 800] [[
+  AddNewJ = 770, i = 155]]
+
+[2015-01-26T01:03:38.959+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218959] [levelValue: 800] [[
+  Lvl = 2, idNew = 770]]
+
+[2015-01-26T01:03:38.959+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218959] [levelValue: 800] [[
+  AddNewJ = 727, i = 168]]
+
+[2015-01-26T01:03:38.959+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218959] [levelValue: 800] [[
+  Lvl = 2, idNew = 727]]
+
+[2015-01-26T01:03:38.959+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218959] [levelValue: 800] [[
+  AddNewJ = 746, i = 169]]
+
+[2015-01-26T01:03:38.959+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218959] [levelValue: 800] [[
+  Lvl = 2, idNew = 746]]
+
+[2015-01-26T01:03:38.959+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218959] [levelValue: 800] [[
+  AddNewJ = 618, i = 183]]
+
+[2015-01-26T01:03:38.959+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218959] [levelValue: 800] [[
+  Lvl = 2, idNew = 618]]
+
+[2015-01-26T01:03:38.959+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218959] [levelValue: 800] [[
+  End of lvl = 2]]
+
+[2015-01-26T01:03:38.959+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218959] [levelValue: 800] [[
+  Level = 3]]
+
+[2015-01-26T01:03:38.959+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218959] [levelValue: 800] [[
+  AddNewJ = 6, i = 0]]
+
+[2015-01-26T01:03:38.959+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218959] [levelValue: 800] [[
+  Lvl = 3, idNew = 6]]
+
+[2015-01-26T01:03:38.959+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218959] [levelValue: 800] [[
+  AddNewJ = 304, i = 0]]
+
+[2015-01-26T01:03:38.959+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218959] [levelValue: 800] [[
+  Lvl = 3, idNew = 304]]
+
+[2015-01-26T01:03:38.959+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218959] [levelValue: 800] [[
+  AddNewJ = 90, i = 3]]
+
+[2015-01-26T01:03:38.959+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218959] [levelValue: 800] [[
+  Lvl = 3, idNew = 90]]
+
+[2015-01-26T01:03:38.959+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218959] [levelValue: 800] [[
+  AddNewJ = 244, i = 3]]
+
+[2015-01-26T01:03:38.959+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218959] [levelValue: 800] [[
+  Lvl = 3, idNew = 244]]
+
+[2015-01-26T01:03:38.959+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218959] [levelValue: 800] [[
+  AddNewJ = 136, i = 4]]
+
+[2015-01-26T01:03:38.959+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218959] [levelValue: 800] [[
+  Lvl = 3, idNew = 136]]
+
+[2015-01-26T01:03:38.959+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218959] [levelValue: 800] [[
+  AddNewJ = 547, i = 6]]
+
+[2015-01-26T01:03:38.959+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218959] [levelValue: 800] [[
+  Lvl = 3, idNew = 547]]
+
+[2015-01-26T01:03:38.959+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218959] [levelValue: 800] [[
+  AddNewJ = 40, i = 7]]
+
+[2015-01-26T01:03:38.959+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218959] [levelValue: 800] [[
+  Lvl = 3, idNew = 40]]
+
+[2015-01-26T01:03:38.959+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218959] [levelValue: 800] [[
+  AddNewJ = 404, i = 7]]
+
+[2015-01-26T01:03:38.959+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218959] [levelValue: 800] [[
+  Lvl = 3, idNew = 404]]
+
+[2015-01-26T01:03:38.959+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218959] [levelValue: 800] [[
+  AddNewJ = 33, i = 8]]
+
+[2015-01-26T01:03:38.959+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218959] [levelValue: 800] [[
+  Lvl = 3, idNew = 33]]
+
+[2015-01-26T01:03:38.959+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218959] [levelValue: 800] [[
+  AddNewJ = 68, i = 9]]
+
+[2015-01-26T01:03:38.959+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218959] [levelValue: 800] [[
+  Lvl = 3, idNew = 68]]
+
+[2015-01-26T01:03:38.959+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218959] [levelValue: 800] [[
+  AddNewJ = 168, i = 10]]
+
+[2015-01-26T01:03:38.959+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218959] [levelValue: 800] [[
+  Lvl = 3, idNew = 168]]
+
+[2015-01-26T01:03:38.959+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218959] [levelValue: 800] [[
+  AddNewJ = 656, i = 10]]
+
+[2015-01-26T01:03:38.959+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218959] [levelValue: 800] [[
+  Lvl = 3, idNew = 656]]
+
+[2015-01-26T01:03:38.959+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218959] [levelValue: 800] [[
+  AddNewJ = 55, i = 12]]
+
+[2015-01-26T01:03:38.959+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218959] [levelValue: 800] [[
+  Lvl = 3, idNew = 55]]
+
+[2015-01-26T01:03:38.959+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218959] [levelValue: 800] [[
+  AddNewJ = 183, i = 14]]
+
+[2015-01-26T01:03:38.959+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218959] [levelValue: 800] [[
+  Lvl = 3, idNew = 183]]
+
+[2015-01-26T01:03:38.959+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218959] [levelValue: 800] [[
+  AddNewJ = 284, i = 14]]
+
+[2015-01-26T01:03:38.959+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218959] [levelValue: 800] [[
+  Lvl = 3, idNew = 284]]
+
+[2015-01-26T01:03:38.959+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218959] [levelValue: 800] [[
+  AddNewJ = 535, i = 16]]
+
+[2015-01-26T01:03:38.959+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218959] [levelValue: 800] [[
+  Lvl = 3, idNew = 535]]
+
+[2015-01-26T01:03:38.959+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218959] [levelValue: 800] [[
+  AddNewJ = 421, i = 17]]
+
+[2015-01-26T01:03:38.959+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218959] [levelValue: 800] [[
+  Lvl = 3, idNew = 421]]
+
+[2015-01-26T01:03:38.959+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218959] [levelValue: 800] [[
+  AddNewJ = 527, i = 19]]
+
+[2015-01-26T01:03:38.959+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218959] [levelValue: 800] [[
+  Lvl = 3, idNew = 527]]
+
+[2015-01-26T01:03:38.959+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218959] [levelValue: 800] [[
+  AddNewJ = 567, i = 20]]
+
+[2015-01-26T01:03:38.959+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218959] [levelValue: 800] [[
+  Lvl = 3, idNew = 567]]
+
+[2015-01-26T01:03:38.959+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218959] [levelValue: 800] [[
+  AddNewJ = 299, i = 22]]
+
+[2015-01-26T01:03:38.959+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218959] [levelValue: 800] [[
+  Lvl = 3, idNew = 299]]
+
+[2015-01-26T01:03:38.959+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218959] [levelValue: 800] [[
+  AddNewJ = 347, i = 22]]
+
+[2015-01-26T01:03:38.959+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218959] [levelValue: 800] [[
+  Lvl = 3, idNew = 347]]
+
+[2015-01-26T01:03:38.959+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218959] [levelValue: 800] [[
+  AddNewJ = 378, i = 22]]
+
+[2015-01-26T01:03:38.959+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218959] [levelValue: 800] [[
+  Lvl = 3, idNew = 378]]
+
+[2015-01-26T01:03:38.959+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218959] [levelValue: 800] [[
+  AddNewJ = 107, i = 24]]
+
+[2015-01-26T01:03:38.959+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218959] [levelValue: 800] [[
+  Lvl = 3, idNew = 107]]
+
+[2015-01-26T01:03:38.959+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218959] [levelValue: 800] [[
+  AddNewJ = 140, i = 24]]
+
+[2015-01-26T01:03:38.959+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218959] [levelValue: 800] [[
+  Lvl = 3, idNew = 140]]
+
+[2015-01-26T01:03:38.959+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218959] [levelValue: 800] [[
+  AddNewJ = 429, i = 24]]
+
+[2015-01-26T01:03:38.959+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218959] [levelValue: 800] [[
+  Lvl = 3, idNew = 429]]
+
+[2015-01-26T01:03:38.959+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218959] [levelValue: 800] [[
+  AddNewJ = 97, i = 25]]
+
+[2015-01-26T01:03:38.959+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218959] [levelValue: 800] [[
+  Lvl = 3, idNew = 97]]
+
+[2015-01-26T01:03:38.959+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218959] [levelValue: 800] [[
+  AddNewJ = 102, i = 25]]
+
+[2015-01-26T01:03:38.959+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218959] [levelValue: 800] [[
+  Lvl = 3, idNew = 102]]
+
+[2015-01-26T01:03:38.959+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218959] [levelValue: 800] [[
+  AddNewJ = 115, i = 25]]
+
+[2015-01-26T01:03:38.959+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218959] [levelValue: 800] [[
+  Lvl = 3, idNew = 115]]
+
+[2015-01-26T01:03:38.959+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218959] [levelValue: 800] [[
+  AddNewJ = 332, i = 25]]
+
+[2015-01-26T01:03:38.959+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218959] [levelValue: 800] [[
+  Lvl = 3, idNew = 332]]
+
+[2015-01-26T01:03:38.959+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218959] [levelValue: 800] [[
+  AddNewJ = 408, i = 30]]
+
+[2015-01-26T01:03:38.959+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218959] [levelValue: 800] [[
+  Lvl = 3, idNew = 408]]
+
+[2015-01-26T01:03:38.959+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218959] [levelValue: 800] [[
+  AddNewJ = 216, i = 31]]
+
+[2015-01-26T01:03:38.959+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218959] [levelValue: 800] [[
+  Lvl = 3, idNew = 216]]
+
+[2015-01-26T01:03:38.959+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218959] [levelValue: 800] [[
+  AddNewJ = 668, i = 35]]
+
+[2015-01-26T01:03:38.959+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218959] [levelValue: 800] [[
+  Lvl = 3, idNew = 668]]
+
+[2015-01-26T01:03:38.959+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218959] [levelValue: 800] [[
+  AddNewJ = 542, i = 37]]
+
+[2015-01-26T01:03:38.959+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218959] [levelValue: 800] [[
+  Lvl = 3, idNew = 542]]
+
+[2015-01-26T01:03:38.959+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218959] [levelValue: 800] [[
+  AddNewJ = 403, i = 38]]
+
+[2015-01-26T01:03:38.959+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218959] [levelValue: 800] [[
+  Lvl = 3, idNew = 403]]
+
+[2015-01-26T01:03:38.959+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218959] [levelValue: 800] [[
+  AddNewJ = 337, i = 42]]
+
+[2015-01-26T01:03:38.959+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218959] [levelValue: 800] [[
+  Lvl = 3, idNew = 337]]
+
+[2015-01-26T01:03:38.959+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218959] [levelValue: 800] [[
+  AddNewJ = 357, i = 42]]
+
+[2015-01-26T01:03:38.959+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218959] [levelValue: 800] [[
+  Lvl = 3, idNew = 357]]
+
+[2015-01-26T01:03:38.959+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218959] [levelValue: 800] [[
+  AddNewJ = 424, i = 47]]
+
+[2015-01-26T01:03:38.959+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218959] [levelValue: 800] [[
+  Lvl = 3, idNew = 424]]
+
+[2015-01-26T01:03:38.959+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218959] [levelValue: 800] [[
+  AddNewJ = 280, i = 48]]
+
+[2015-01-26T01:03:38.959+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218959] [levelValue: 800] [[
+  Lvl = 3, idNew = 280]]
+
+[2015-01-26T01:03:38.959+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218959] [levelValue: 800] [[
+  AddNewJ = 458, i = 51]]
+
+[2015-01-26T01:03:38.959+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218959] [levelValue: 800] [[
+  Lvl = 3, idNew = 458]]
+
+[2015-01-26T01:03:38.959+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218959] [levelValue: 800] [[
+  AddNewJ = 343, i = 52]]
+
+[2015-01-26T01:03:38.959+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218959] [levelValue: 800] [[
+  Lvl = 3, idNew = 343]]
+
+[2015-01-26T01:03:38.959+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218959] [levelValue: 800] [[
+  AddNewJ = 207, i = 54]]
+
+[2015-01-26T01:03:38.959+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218959] [levelValue: 800] [[
+  Lvl = 3, idNew = 207]]
+
+[2015-01-26T01:03:38.959+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218959] [levelValue: 800] [[
+  AddNewJ = 784, i = 56]]
+
+[2015-01-26T01:03:38.959+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218959] [levelValue: 800] [[
+  Lvl = 3, idNew = 784]]
+
+[2015-01-26T01:03:38.959+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218959] [levelValue: 800] [[
+  AddNewJ = 440, i = 60]]
+
+[2015-01-26T01:03:38.959+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218959] [levelValue: 800] [[
+  Lvl = 3, idNew = 440]]
+
+[2015-01-26T01:03:38.959+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218959] [levelValue: 800] [[
+  AddNewJ = 631, i = 60]]
+
+[2015-01-26T01:03:38.959+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218959] [levelValue: 800] [[
+  Lvl = 3, idNew = 631]]
+
+[2015-01-26T01:03:38.959+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218959] [levelValue: 800] [[
+  AddNewJ = 529, i = 66]]
+
+[2015-01-26T01:03:38.959+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218959] [levelValue: 800] [[
+  Lvl = 3, idNew = 529]]
+
+[2015-01-26T01:03:38.959+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218959] [levelValue: 800] [[
+  AddNewJ = 320, i = 68]]
+
+[2015-01-26T01:03:38.959+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218959] [levelValue: 800] [[
+  Lvl = 3, idNew = 320]]
+
+[2015-01-26T01:03:38.959+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218959] [levelValue: 800] [[
+  AddNewJ = 236, i = 70]]
+
+[2015-01-26T01:03:38.959+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218959] [levelValue: 800] [[
+  Lvl = 3, idNew = 236]]
+
+[2015-01-26T01:03:38.959+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218959] [levelValue: 800] [[
+  AddNewJ = 789, i = 72]]
+
+[2015-01-26T01:03:38.959+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218959] [levelValue: 800] [[
+  Lvl = 3, idNew = 789]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  AddNewJ = 736, i = 74]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  Lvl = 3, idNew = 736]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  AddNewJ = 687, i = 78]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  Lvl = 3, idNew = 687]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  AddNewJ = 790, i = 79]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  Lvl = 3, idNew = 790]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  AddNewJ = 319, i = 81]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  Lvl = 3, idNew = 319]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  AddNewJ = 368, i = 81]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  Lvl = 3, idNew = 368]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  AddNewJ = 578, i = 84]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  Lvl = 3, idNew = 578]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  AddNewJ = 797, i = 88]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  Lvl = 3, idNew = 797]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  AddNewJ = 657, i = 90]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  Lvl = 3, idNew = 657]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  End of lvl = 3]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  Level = 4]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  AddNewJ = 10, i = 0]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  Lvl = 4, idNew = 10]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  AddNewJ = 463, i = 0]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  Lvl = 4, idNew = 463]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  AddNewJ = 331, i = 1]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  Lvl = 4, idNew = 331]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  AddNewJ = 392, i = 3]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  Lvl = 4, idNew = 392]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  AddNewJ = 316, i = 4]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  Lvl = 4, idNew = 316]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  AddNewJ = 587, i = 7]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  Lvl = 4, idNew = 587]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  AddNewJ = 362, i = 8]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  Lvl = 4, idNew = 362]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  AddNewJ = 464, i = 8]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  Lvl = 4, idNew = 464]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  AddNewJ = 484, i = 10]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  Lvl = 4, idNew = 484]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  AddNewJ = 492, i = 10]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  Lvl = 4, idNew = 492]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  AddNewJ = 283, i = 13]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  Lvl = 4, idNew = 283]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  AddNewJ = 660, i = 13]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  Lvl = 4, idNew = 660]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  AddNewJ = 336, i = 14]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  Lvl = 4, idNew = 336]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  AddNewJ = 539, i = 15]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  Lvl = 4, idNew = 539]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  AddNewJ = 583, i = 16]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  Lvl = 4, idNew = 583]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  AddNewJ = 573, i = 17]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  Lvl = 4, idNew = 573]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  AddNewJ = 653, i = 18]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  Lvl = 4, idNew = 653]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  AddNewJ = 235, i = 22]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  Lvl = 4, idNew = 235]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  AddNewJ = 691, i = 22]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  Lvl = 4, idNew = 691]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  AddNewJ = 710, i = 24]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  Lvl = 4, idNew = 710]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  AddNewJ = 718, i = 24]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  Lvl = 4, idNew = 718]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  AddNewJ = 159, i = 27]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  Lvl = 4, idNew = 159]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  AddNewJ = 184, i = 27]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  Lvl = 4, idNew = 184]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  AddNewJ = 386, i = 27]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  Lvl = 4, idNew = 386]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  AddNewJ = 361, i = 34]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  Lvl = 4, idNew = 361]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  AddNewJ = 437, i = 37]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  Lvl = 4, idNew = 437]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  AddNewJ = 512, i = 37]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  Lvl = 4, idNew = 512]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  AddNewJ = 419, i = 39]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  Lvl = 4, idNew = 419]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  AddNewJ = 780, i = 42]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  Lvl = 4, idNew = 780]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  End of lvl = 4]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  Level = 5]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  AddNewJ = 19, i = 0]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  Lvl = 5, idNew = 19]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  AddNewJ = 25, i = 0]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  Lvl = 5, idNew = 25]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  AddNewJ = 413, i = 3]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  Lvl = 5, idNew = 413]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  AddNewJ = 317, i = 4]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  Lvl = 5, idNew = 317]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  AddNewJ = 445, i = 4]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  Lvl = 5, idNew = 445]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  AddNewJ = 560, i = 9]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  Lvl = 5, idNew = 560]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  AddNewJ = 762, i = 19]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  Lvl = 5, idNew = 762]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  AddNewJ = 164, i = 21]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  Lvl = 5, idNew = 164]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  AddNewJ = 191, i = 21]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  Lvl = 5, idNew = 191]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  AddNewJ = 466, i = 24]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  Lvl = 5, idNew = 466]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  AddNewJ = 599, i = 26]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  Lvl = 5, idNew = 599]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  End of lvl = 5]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  Level = 6]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  AddNewJ = 743, i = 0]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  Lvl = 6, idNew = 743]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  AddNewJ = 187, i = 1]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  Lvl = 6, idNew = 187]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  AddNewJ = 208, i = 1]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  Lvl = 6, idNew = 208]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  AddNewJ = 384, i = 1]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  Lvl = 6, idNew = 384]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  AddNewJ = 520, i = 2]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  Lvl = 6, idNew = 520]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  AddNewJ = 546, i = 2]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  Lvl = 6, idNew = 546]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  AddNewJ = 592, i = 2]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  Lvl = 6, idNew = 592]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  AddNewJ = 652, i = 2]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  Lvl = 6, idNew = 652]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  AddNewJ = 364, i = 3]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  Lvl = 6, idNew = 364]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  AddNewJ = 600, i = 5]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  Lvl = 6, idNew = 600]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  AddNewJ = 608, i = 5]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  Lvl = 6, idNew = 608]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  AddNewJ = 350, i = 7]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  Lvl = 6, idNew = 350]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  AddNewJ = 287, i = 8]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  Lvl = 6, idNew = 287]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  AddNewJ = 523, i = 9]]
+
+[2015-01-26T01:03:38.960+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218960] [levelValue: 800] [[
+  Lvl = 6, idNew = 523]]
+
+[2015-01-26T01:03:38.963+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218963] [levelValue: 800] [[
+  End of lvl = 6]]
+
+[2015-01-26T01:03:38.963+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218963] [levelValue: 800] [[
+  Level = 7]]
+
+[2015-01-26T01:03:38.963+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218963] [levelValue: 800] [[
+  AddNewJ = 355, i = 1]]
+
+[2015-01-26T01:03:38.963+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218963] [levelValue: 800] [[
+  Lvl = 7, idNew = 355]]
+
+[2015-01-26T01:03:38.963+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218963] [levelValue: 800] [[
+  AddNewJ = 222, i = 2]]
+
+[2015-01-26T01:03:38.963+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218963] [levelValue: 800] [[
+  Lvl = 7, idNew = 222]]
+
+[2015-01-26T01:03:38.963+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218963] [levelValue: 800] [[
+  AddNewJ = 665, i = 6]]
+
+[2015-01-26T01:03:38.963+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218963] [levelValue: 800] [[
+  Lvl = 7, idNew = 665]]
+
+[2015-01-26T01:03:38.963+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218963] [levelValue: 800] [[
+  End of lvl = 7]]
+
+[2015-01-26T01:03:38.963+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218963] [levelValue: 800] [[
+  Level = 8]]
+
+[2015-01-26T01:03:38.963+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218963] [levelValue: 800] [[
+  AddNewJ = 410, i = 0]]
+
+[2015-01-26T01:03:38.963+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218963] [levelValue: 800] [[
+  Lvl = 8, idNew = 410]]
+
+[2015-01-26T01:03:38.963+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218963] [levelValue: 800] [[
+  AddNewJ = 475, i = 0]]
+
+[2015-01-26T01:03:38.963+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218963] [levelValue: 800] [[
+  Lvl = 8, idNew = 475]]
+
+[2015-01-26T01:03:38.963+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218963] [levelValue: 800] [[
+  AddNewJ = 499, i = 0]]
+
+[2015-01-26T01:03:38.963+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218963] [levelValue: 800] [[
+  Lvl = 8, idNew = 499]]
+
+[2015-01-26T01:03:38.963+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218963] [levelValue: 800] [[
+  AddNewJ = 674, i = 2]]
+
+[2015-01-26T01:03:38.963+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218963] [levelValue: 800] [[
+  Lvl = 8, idNew = 674]]
+
+[2015-01-26T01:03:38.963+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218963] [levelValue: 800] [[
+  End of lvl = 8]]
+
+[2015-01-26T01:03:38.963+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218963] [levelValue: 800] [[
+  Level = 9]]
+
+[2015-01-26T01:03:38.963+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218963] [levelValue: 800] [[
+  AddNewJ = 549, i = 2]]
+
+[2015-01-26T01:03:38.963+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218963] [levelValue: 800] [[
+  Lvl = 9, idNew = 549]]
+
+[2015-01-26T01:03:38.963+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218963] [levelValue: 800] [[
+  End of lvl = 9]]
+
+[2015-01-26T01:03:38.963+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218963] [levelValue: 800] [[
+  Level = 10]]
+
+[2015-01-26T01:03:38.963+0000] [glassfish 4.0] [INFO] [] [] [tid: _ThreadID=19 _ThreadName=Thread-3] [timeMillis: 1422234218963] [levelValue: 800] [[
+  End of lvl = 10]]
+
