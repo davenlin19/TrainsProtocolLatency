@@ -93,10 +93,19 @@
 			height: 30px;
 			margin-bottom: 10px;
 		}
+		#imagePage {
+                top: 12px;
+                right: 12px;
+        }
+        #imagePage img {
+                width: 100px;
+                height: 100px;
+        }
 	</style>
 </head>
 <body>
 	<h1 id="pageTitle">Twitter Client</h1>
+	<div id="imagePage" style="position: absolute"><img src="img/"/><img src="img/twitter_icon.png"/></div>
 	<input id="btnAddTweet" type="button" value="Add Tweet"/>
 	<div id="dataTweets" class="demo"></div>
 </body>
