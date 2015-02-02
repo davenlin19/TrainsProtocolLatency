@@ -204,23 +204,6 @@ void trainHandling(womim *p_womim){
   cleanList(unstableWagons[id][(round - 1 + NR) % NR]);
 #endif /* UNIFORM_BROADCAST */
 
-  /*int i = 0, j = 0;
-  if(counters.recent_trains_received < 20) {
-	printf("=== UnstableWagons ===\n");
-	for(i=0; i<2; i++) {
-		printf("\t => %d\n", i);
-		j = 0;
-		LINK *link;
-		link = unstableWagons[0][i]->first;
-		while (link && link->value) {
-			printf("\t\t%d: %s\n", j, link->value);
-			link=link->next;
-			++j;
-		}
-	}
-	// printf("WagonsToDeliver:: first: %p, last: %p\n", wagonsToDeliver->list->first, wagonsToDeliver->list->last);
-  }*/
-
   if (id == 0) {
     lts[0].circuit = addrUpdateCircuit(p_womim->msg.body.train.circuit,
         myAddress, cameProc, goneProc);
