@@ -66,7 +66,7 @@ public class Main {
 						+ newOrder.getLatency() + ")");
 		System.out.println("Sync: " + "INSERT INTO `ORDER` VALUES(null, "
 				+ newOrder.getBuyer_id() + ", " + newOrder.getProduct_id()
-				+ ", " + newOrder.getQuantity() + ", " + newOrder.getSendDate()
+				+ ", " + newOrder.getQuantity() + ", '" + newOrder.getSendDate()
 				+ "', " + newOrder.getLatency() + ")");
 		ps.execute();
 		System.out.println("Insert into database.");
