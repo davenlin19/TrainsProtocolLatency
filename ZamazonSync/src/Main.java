@@ -61,7 +61,7 @@ public class Main {
 				.prepareStatement("INSERT INTO `ORDER` VALUES(null, "
 						+ newOrder.getBuyer_id() + ", "
 						+ newOrder.getProduct_id() + ", "
-						+ newOrder.getQuantity() + ", "
+						+ newOrder.getQuantity() + ", '"
 						+ newOrder.getSendDate() + "', "
 						+ newOrder.getLatency() + ")");
 		System.out.println("Sync: " + "INSERT INTO `ORDER` VALUES(null, "
